@@ -1,19 +1,24 @@
 let result = "";
 fetch('./frontEndData.json')
-  .then((res) => res.json())
-   .then(({ rows } = data) => {
-    rows.forEach(({ title, avatar, intro } = rows) => {
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    appendData(data);
+  })
+  .catch(function (err) {
+    console.log('error: ' + err);
+  });
+  function appendData(data) {
+    data.forEach(({ name, image, hyperlink, about, language } = rows) => {
       result += `
        <div class="card">
-            <img class="card-avatar" src="/${avatar}"/>
-            <h1 class="card-title">${title}</h1>
-            <p class="intro">${intro}</p>
-            <a class="card-link" href="#">Read</a>
+            <img class="card-image" src="${image}"/>
+            <h1 class="card-name">${name}</h1>
+            <p class="card-about">${about}</p>
+            <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
         </div>
        `;
     });
     document.querySelector(".container").innerHTML = result;
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+  }
