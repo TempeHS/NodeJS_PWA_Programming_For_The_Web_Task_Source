@@ -13,7 +13,7 @@ fetch('./frontEndData.json')
     data.forEach(({ name, image, hyperlink, about, language } = rows) => {
       result += `
        <div class="card">
-            <img class="card-image" src="${image}"/>
+            <img class="card-image" src="${image}" alt="Product image for the ${name} VSCode extension."/>
             <h1 class="card-name">${name}</h1>
             <p class="card-about">${about}</p>
             <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
@@ -21,4 +21,13 @@ fetch('./frontEndData.json')
        `;
     });
     document.querySelector(".container").innerHTML = result;
+  }
+  
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker
+        .register("/serviceWorker.js")
+        .then((res) => console.log("service worker registered"))
+        .catch((err) => console.log("service worker not registered", err));
+    });
   }
