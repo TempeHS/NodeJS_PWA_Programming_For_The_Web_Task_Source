@@ -13,6 +13,7 @@ INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (4,"Star
 INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (5,"SQLite3 Editor","https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor","Edit SQLite3 files like you would in spreadsheet applications.","https://yy0931.gallerycdn.vsassets.io/extensions/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default","SQL");
 
 
+
 SELECT * FROM extension;
 
 SELECT * FROM extension WHERE language LIKE '#BASH';

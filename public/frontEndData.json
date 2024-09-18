@@ -38,5 +38,13 @@
 "about":"Edit SQLite3 files like you would in spreadsheet applications.",
 "image":"https://yy0931.gallerycdn.vsassets.io/extensions/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default",
 "language":"SQL"
+},
+{
+"extID":6,
+"name":"SQLite3 Editor",
+"hyperlink":"https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor",
+"about":"Edit SQLite3 files like you would in spreadsheet applications.",
+"image":"https://yy0931.gallerycdn.vsassets.io/extensions/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default",
+"language":"SQL"
 }
 ]
