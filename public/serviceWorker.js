@@ -3,7 +3,6 @@ const assets = [
     "css/style.css",
     "js/app.js",
     "/images/logo.png",
-    "/images/blog2.jpg",
     "/images/favicon.jpg",
     "/icons/icon-128x128.png",
     "/icons/icon-192x192.png",
