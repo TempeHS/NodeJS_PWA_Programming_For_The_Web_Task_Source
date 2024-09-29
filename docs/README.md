@@ -1,25 +1,42 @@
-> [!WARNING]
-> Not node.js instructions, work being done
-
 # INTRODUCTION TO FLASK AND PROGRESSIVE WEB APPS TUTORIAL
 
-This guided tutorial will introduce HSC Software Engineering to the basics of developing websites with the [Python Flask framework](https://flask.palletsprojects.com/en/3.0.x/). The tutorial has been specifcally deisgned for requirements in the [NESA Software Engineering Syllabus](https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022/content/n12/fa6aab137e) and for students in NSW Department of Education schools using eT4L computers.
+This guided tutorial will introduce HSC Software Engineering to the basics of developing websites with the [Node.js](https://nodejs.org/en). The tutorial has been specifically designed for requirements in the [NESA Software Engineering Syllabus](https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022/content/n12/fa6aab137e) and for students in NSW Department of Education schools using eT4L computers.
 
-![Screen capture of the finished PWA](/docs/README_resources/final_app.png "This is what your application will look like").
+## Overview of Progressive Web Apps
+
+A [Progressive Web Apps (PWAs)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps?ref=arctype.com) is an app that is built using web platform technologies, but that provides a user experience like that of a platform-specific app. Like a website, a PWA can run on multiple platforms and devices from a single codebase. Like a platform-specific app, it can be installed on the device, can operate while offline and in the background, and can integrate with the device and with other installed apps.
+
+### Technical features of PWAs
+
+Because PWAs are websites, they have the same basic features as any other website: at least one HTML page, which loads CSS and JavaScript. Javascript is the language of the web and is exclusivly used for client side front end, python in the web context can only be used in the back end. Like a normal website, the JavaScript loaded by the page has a global Window object and can access all the Web APIs that are available through that object. The PWA standard as defined by [W3C Standards](https://www.w3.org/standards/) has some specific features additonal to a website:
+    - A web app manifest file, which, at a minimum, provides information that the browser needs to install the PWA, such as the app name and icon.
+    - A service worker, which, at a minimum, provides a basic offline experience.
+    - A set of icons and screenshots that are required when installing it as a native application.
+The below image illustrates how the servicework manages online and offline behaviour.
+![A highlevel illustration of teh service worker](/docs/README_resources/Progressive-Web-Apps-Architecture.png "The service worker handles the initial requests and sets teh behaviour depending on if the app is on or offline.")
+
+## Your end product
+This screen capture shows how the final PWA will render to the user.
+![Screen capture of the finished PWA](/docs/README_resources/final_app.png "This is what your application will look like")
 
 ## Requirements
 
 1. VSCode
-1. Python 3.x
+2. Python 3.x +
+3. Node.js v.20.x +
 
 ## Prior learning
 
-1. Bash basics
+1. Bash basics & using the GIT Bash shell in VSCode
 2. SQL
 3. HTML Basics
 4. CSS Basics
+5. Python
 
-## STEPS TO SUCCESS
+> [!NOTE]
+> From here in, you should aim to run all commands from the CLI. You are discouraged from left/right clicking the GUI. You will find it feels slow at first but through disciplined use, you will become much quicker and more accurate with CLI commands than GUI controls.
+
+## STEPS TO BUILDING YOUR FIRST PWA
 
 ### Setup your environment
 
@@ -27,20 +44,22 @@ This guided tutorial will introduce HSC Software Engineering to the basics of de
     - Open a new window in VSCode
     - Choose your working directory
     - ```bash
-        git clone https://github.com/TempeHS/Flask_PWA_Programming_For_The_Web_Task_Template.git
+        git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
+        cd NodeJS_PWA_Programming_For_The_Web_Task_Template
+      ```
 
 > [!TIP]
-> Alternatively you can fork the [template repository](https://github.com/TempeHS/Flask_PWA_Programming_For_The_Web_Task_Template) to your own GitHub account and open it in a Codespace in which all dependencis and extensions will be automatically installed.
+> Alternatively you can fork the [template repository](https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template) to your own GitHub account and open it in a Codespace in which all dependencis and extensions will be automatically installed.
 
-2. Install necessary depenencies.
+1. Install necessary depenencies.
 
 ```bash
-    pip install sqlite
-    pip install flask
+    npm install sqlite3
+    npm install express
 ```
 
 3. Install specically required extensions for this tutorial.
-   - [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+   - [ms-vscode.js-debug-nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)
    - [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash)
    - [alexcvzz.vscode-sqlite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
    - [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)
@@ -71,20 +90,24 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ```text
     ├── .database
     ├── .workingdocuments
-    ├── static
+    ├── public
     │   ├── css
     │   ├── icons  
     │   ├── images  
     │   ├── js  
-    ├── templates  
+    │   ├── index.html
+    │   ├── about.html    
+    │   ├── manifest.json
+    │   ├── serviceWorker.js  
     ├── LICENSE  
-    ├── main.py  
-    └── database_manager.py
+    └── index.js
 ```
 
-3. Populate a text file with a list of folders you need in the root of your project.
+3. Populate a text file with a list of folders you need in the public of your project. All contents of the public folder will be served by the webserver. This folder is the 'FRONT END' while all folders behind it are the 'BACK END'.
 
 ```bash
+    mkdir public
+    cd public
     touch folders.txt
     code folder.txt
 ```
@@ -124,6 +147,8 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ### Setup your SQLite3 Database
 
 ```bash
+    cd ..
+    mkdir .database
     cd .database
     touch data_source.db
     touch my_queries.sql
@@ -131,8 +156,8 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ```
 
 > [!NOTE]
-> The following SQL queries are provided as an example only, students are encouraged to design their own table and content, ideas include:
-
+> The following SQL queries are provided as an example only, students are encouraged to select their own content and design a database schema for it, ideas include:
+>
 > - Favourate bands
 > - Favourate movies
 > - Favourate games
@@ -187,11 +212,11 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 6. Web optimise the images using [TinyPNG](https://tinypng.com/) and save them into the static/icons.
 
 > [!NOTE]
-> Graphic design is not the focus of this course, students are encouraged not to spend excessive time designing logos and icons.
+> Graphic design is not the focus of this course, you should not spend excessive time designing logos and icons.
 
 ---
 
-### Setup your index.HTML using the Jinga2 template system
+### Setup your core index.html
 
 > [!NOTE]
 > Adjust titles, headings and content to match your concept.
@@ -202,7 +227,7 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
     code layout.html
 ```
 
-5. Insert the basic HTML struture in your templates/layout.html file.
+5. Insert the basic HTML struture in your index.html file.
 
 ```html
     <!DOCTYPE html>
@@ -212,35 +237,22 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
-        <link rel="stylesheet" href="static/css/style.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <title>VSCode Extension Catalogue</title>
-        <link rel="manifest" href="static/manifest.json" />
-        <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
+        <link rel="manifest" href="manifest.json" />
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
     </head>
     <body>
         <main>
-        {% include "partials/menu.html" %}
-        {% block content %}{% endblock %}
+            <!-- NAV START -->
+
+            <!-- NAV END -->            
+            <div class="container">
+            </div>
         </main>
-        <script src="static/js/app.js"></script>
+        <script src="js/app.js"></script>
     </body>
     </html>
-```
-
-6. Insert the block content into index.html, you will add more later.
-
-```bash
-    touch index.html
-    code index.html
-```
-
-```html
-    {% extends 'layout.html' %}
-    {% block content %}
-        <div class="container">
-
-        </div>
-    {% endblock %}
 ```
 
 ---
@@ -248,12 +260,12 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ### Style the HTML core
 
 ```bash
-    cd ../static/css
+    cd css
     touch style.css
     code style.css
 ```
 
-1. Insert the css code into static/css/style.css.
+1. Insert the css code into css/style.css.
 
 ```css
     @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
@@ -280,16 +292,13 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ### Make and style the menu
 
 ```bash
-    cd ../..templates
-    mkdir partials
-    cd partials
-    touch menu.html
-    code menu.html
+    cd ..
+    code index.html
 ```
 
-1. Insert the menu HTML into menu.html.
+1. Insert the menu HTML into index.html between the comment placeholders.
 
-```css
+```html
     <nav>
         <img src="static\images\logo.png" alt="VSCode Extensions site logo." />
         <h1>VSCode Extensions</h1>
@@ -341,99 +350,197 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 <HR
 
 ### Render your website
+Express is a light weight webserver designed specifically for Node.js web applications. You have already installed it when you set up your environment.
 
 ```bash
     cd ../..
-    code main.py
+    code index.js
 ```
 
-1. Insert the Flask python to the backend script.
+1. Insert the node.js to the backend index.js.
 
-```python
-    from flask import Flask
-    from flask import render_template
-    from flask import request
-    import database_manager as dbHandler
+```js
+    
+    // Insert additional backend js above the express server configuration
 
-    app = Flask(__name__)
-
-    @app.route('/index.html', methods=['GET'])
-    @app.route('/', methods=['POST', 'GET'])
-    def index():
-        return render_template('/index.html')
-
-    if __name__ == '__main__':
-        app.run(debug=True, host='0.0.0.0', port=80)
+    const express = require("express");
+    const path = require("path");
+    const app = express();
+    app.use(express.static(path.join(__dirname, "public")));
+    
+    app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "public/index.html"));
+    });
+    app.listen(8000, () => console.log("Server is running on Port 8000, visit http://localhost:80/ or http://127.0.0.1:80 to access your website") );
 ```
 
 2. Run the builtin webserver.
 
 ```bash
-    python main.py
+    node index.js
 ```
 
 3. Visit your website and look at the souce in developer tools to see how the page has rendered.
 
-> [!NOTE]
-> To explain how Jinga2 works in this example; when index.html is called the render will start with layout.html with the code from partials/menu.html inserted where `{% include "partials/menu.html" %}` is and the index.html content that is between the `{% block content %}` and `{% endblock %}` will be inserted in the same tags in the layout.html.
+---
+
+### Query your SQL database and migrate the data for the frontend
+
+>[!NOTE]
+> From here students have two choices, they can use their existing Python skills or new JS skills. Either way students will be querying a table in data_source.db and then constructing a JSON file that will be pushed to the frontend ready for rending by a frontend JS script.
+> If you choose the JS method, you may want to refer to the Python method in the future as a helpful way to have more complex Python programs in the backend and create a simple responsive GUI using HTML/CSS/JS.
+
+#### Why JSON?
+[JSON (JavaScript Object Notation)](https://www.json.org/json-en.html) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is also very secure and the worflow used in this application ensures data integrity of the backend.
+
+### Choose your implementaion language:
+
+<details>
+    <summary><h3 style="display:inline">I want to use Python</h3></summary>
+
+    ```bash
+    touch database_manager.py
+    code database_manager.py
+    ```
+
+1. Write the Python Script to query the SQL database and construct the JSON file.
+
+    ```python
+    import sqlite3 as sql
+
+    con = sql.connect(".database/data_source.db")
+    cur = con.cursor()
+    data = cur.execute('SELECT * FROM extension').fetchall()
+    con.close()
+    f = open("templates/partials/sucess_feedback.html", "w")
+    f = open("public/feedback.json", "w")
+    f.write("[\n")
+    for row_num,row in enumerate(data):
+        f.write("{\n")
+        f.write(f'"PUT":"{row[1]}"\n')
+        
+        myString = myString + '{\n"extID":' + row.extID + ',\n"name":"' + row.name + '",\n"hyperlink":"' + row.hyperlink + '",\n"about":"' + row.about + '",\n"image":"' + row.image + '",\n"language":"' + row.language;
+        
+        if row == data[len(data)-1]:
+            f.write("}\n")
+        else:
+            f.write("},\n")
+    f.write("]\n")
+
+    ```
+
+>[!NOTE]
+> This approach is different from the Pythonic way to generate a JSON file. Because this approach is about algorithm design, it models how an algorithm can easily migrate data from one format/structure to another. If you know the Pythonic way feel free to implement it. However, software engineers should understand and be able to replicate data migration algoriythms.
+
+    ```bash
+    code index.js
+    ```
+
+2. Insert this js above the express setup in index.js to run the Python program.
+
+    ```js
+    const spawn = require("child_process").spawn;
+    // you can add arguments with spawn('python',["path/to/script.py", arg1, arg2, ...])
+    const pythonProcess = spawn('python',["database_manager.py"]);
+    ```
+
+3. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
+
+    ```bash
+    node index.js
+    ```
+
+</details>
+
+<details>
+  <summary><h3 style="display:inline">I want to use JavaScript</h3></summary>
+  
+    ```bash
+    code index.js
+    ```
+
+1. Write the Python Script to query the SQL database and construct the JSON file.
+
+    ```js
+    const sqlite3 = require('sqlite3').verbose();
+    const db = new sqlite3.Database('.database/data_source.db');
+
+    let myString = '[\n';
+    db.all("SELECT * FROM extension", function(err, rows) {
+        let myCounter = 0;
+        rows.forEach(function (row) {
+        // for debugging
+        // console.log(row.extID + ": " + row.name + ": " + row.hyperlink + ": " + row.about + ": " + row.image + ": " + row.language);  
+        myString = myString + '{\n"extID":' + row.extID + ',\n"name":"' + row.name + '",\n"hyperlink":"' + row.hyperlink + '",\n"about":"' + row.about + '",\n"image":"' + row.image + '",\n"language":"' + row.language;
+        myCounter++;
+        if (myCounter == rows.length) {
+            myString = myString + '"\n}\n';
+        } else {
+            myString = myString + '"\n},\n';
+        }
+    });
+
+    // console.log(myString);
+    var fs = require('fs');
+    fs.writeFile("public/frontEndData.json", myString + "]", function(err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+    });
+    ```
+
+3. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
+
+    ```bash
+    node index.js
+    ```
+
+</details>
 
 ---
 
-### Query your SQL database and render the content on the frontend
+### Render the JSON data on the frontend
+
+    ```bash
+    cd public/js
+    code app.js
+    ```
+
+1. Insert the js into public/js/app.js, this js reads the JSON file and inserts it as HTML into the .container class `<DIV>`.
+    ```js
+    let result = "";
+    fetch('./frontEndData.json')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        appendData(data);
+    })
+    .catch(function (err) {
+        console.log('error: ' + err);
+    });
+    function appendData(data) {
+        data.forEach(({ name, image, hyperlink, about, language } = rows) => {
+        result += `
+            <div class="card">
+            <img class="card-image" src="${image}" alt="Product image for the ${name} VSCode extension."/>
+            <h1 class="card-name">${name}</h1>
+            <p class="card-about">${about}</p>
+            <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
+            </div>
+            `;
+        });
+    document.querySelector(".container").innerHTML = result;
+    }
+    ```
 
 ```bash
-    code database_manager.py
-```
-
-1. Query the database and store the data in a variable.
-
-```python
-    import sqlite3 as sql
-
-    def listExtension():
-        con = sql.connect("databaseFiles/database.db")
-        cur = con.cursor()
-        data = cur.execute('SELECT * FROM extension').fetchall()
-        con.close()
-        return data
-```
-
-```bash
-    code main.py
-```
-
-2. Pass the data to the front end by modifying the existing `app.route`.
-
-```python
-def index():
-     data = dbhandler.listExtension()
-     return render_template('/index.html', content=data)
-```
-
-```bash
-    cd templates
-    code index.html
-```
-
-3. Use Janga2 to pass the data (which is a [tuple](https://www.w3schools.com/python/python_tuples.asp)) to front end content. Insert the HTML inside the `<div class="container">` of the index.html.
-
-```html
-    {% for row in content %}
-        <div class="card">
-            <img class="card-image" src='{{ row[4] }}' alt="Product image for the {{ row[1] }} VSCode extension.">
-            <h1 class="card-name">{{ row[1] }}</h1>
-            <p class="card-about">{{ row[3] }}</p>
-            <a class="card-link" href="{{ row[2] }}"><button class="btn">Read More</button></a>
-        </div> 
-    {% endfor %} 
-```
-
-```bash
-    cd ../static/css
+    cd ../css
     code style.css
 ```
 
-4. Style the cards by inserting this below your existing CSS in static/css/style.css.
+2. Style the cards by inserting this below your existing CSS in static/css/style.css.
 
 ```css
     .container {
@@ -573,7 +680,7 @@ def index():
             "purpose": "any"
         }
         ],
-    "screenshots" : [
+        "screenshots" : [
         {
         "src": "icons/desktop_screenshot.png",
         "sizes": "1920x1080",
@@ -685,76 +792,3 @@ Validation is important to ensure the app is compliant to [W3 web standards](htt
 ![Screen cpature of Chrome Lighthouse report](/docs/README_resources/Chrome_Lighthouse_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
 2. Open your website in Edge and open developer tools (F12), look at the application report.
 ![Screen cpature of Chrome Lighthouse report](/docs/README_resources/Edge_Application_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
-
----
-
-### Take your app further
-The following code snippets will help you create a simple form in the add.html page. This form is for people to add their details to an email database for updates on your catalogue. Less explict instructions have been provided, students are encouraged to practice their BASH, SQL Flask and HTML to bring it all together. The screen shot below is what the page should like like and when users submit the database is updated.
-
-![Screen capture of the finished PWA](/docs/README_resources/form_example.png "This is what your application will look like").
-
-1. Page specifications:
-    - Simple form where the user inserts their name and email address
-    - When they click submit the data base is updated and the form is replaced with a thank you message.
-    - The form Button and labels are already styled by existing CSS you need to style the input boxes.
-3. SQL specifications:
-    - A new table called contact_list
-    - 3 columns
-      - id is the primary key and should increment automatically
-      - email must be unique
-      - name
-
-```python
-    def insertContact(email,name):
-        con = sql.connect(".database/data_source.db")
-        cur = con.cursor()
-        cur.execute("INSERT INTO contact_list (email,name) VALUES (?,?)", (email,name))
-        con.commit()
-        con.close()
-```
-
-> [!NOTE]
-> You will need to catch the expection of a duplicate email
-
-```python
-    @app.route('/add.html', methods=['POST', 'GET'])
-    def add():
-        if request.method=='POST':
-            email = request.form['email']
-            name = request.form['name']
-            dbHandler.insertContact(email,name)
-            return render_template('/add.html', is_done=True")
-        else:
-            return render_template('/add.html')
-```
-
-```html
-    {% if is_done %}
-        <--DO THIS-->
-    {% else %}
-        <--DO THIS-->
-    {% endif %}
-```
-
-```html
-    <form action="/app.html" method="POST" class="box">
-      <div>
-        <label class="form-label">Email address</label>
-        <input name="email" type="email" class="form-control" id="name" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" placeholder="name@example.com">
-      </div>
-      <div>
-        <label class="form-label">Name</label>
-        <textarea class="form-control" name="text" id="name" rows="1"></textarea>
-      </div>
-      <br/>
-      <div>
-        <button type="submit" class="btn">Submit</button>
-      </div>
-    </form>
-```
-
-```css
-    .form-control {
-
-    }
-```
