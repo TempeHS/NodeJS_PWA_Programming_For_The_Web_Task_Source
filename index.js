@@ -28,9 +28,23 @@ db.all("SELECT * FROM extension", function(err, rows) {
  const path = require("path");
  const app = express();
  app.use(express.static(path.join(__dirname, "public")));
+ let bodyParser = require('body-parser');
+ app.use(bodyParser.urlencoded({extended: false}));
  
  app.get("/", function (req, res) {
    res.sendFile(path.join(__dirname, "public/index.html"));
+   res.sendFile(path.join(__dirname,'.public/add.html'));
  });
- app.listen(80, () => console.log("Server is running on Port 80, visit http://localhost:80/ or http://127.0.0.1:80 to access your website") );
- 
+  
+ app.post('/add.html', function(req,res){
+  db.serialize(()=>{
+    db.run('INSERT INTO contact_list(email,name) VALUES(?,?)', [req.body.email, req.body.name], function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      res.send("Thank you "+req.body.name+" we have added your email "+req.body.email+" to our distribution list.");
+    });
+});
+});
+
+app.listen(80, () => console.log("Server is running on Port 80, visit http://localhost:80/ or http://127.0.0.1:80 to access your website") );

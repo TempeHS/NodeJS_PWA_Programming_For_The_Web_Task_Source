@@ -112,3 +112,13 @@ form {
     transition: all 0.2s;
     width:100%;
 }
+.form-control {
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    margin: 1rem;
+    background: transparent;
+    transition: all 0.2s;
+    width:100%;
+}

@@ -45,7 +45,9 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
 
 ### Setup your environment
 
-1. Get the working files which includes this README.md
+1. Common VScode settings are set in .vscode/settings.json and default plugins are in .devcontainer/devcontainer.json (devcontainer assumes you have the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) installed.). Those with VSCode experience should adjust any settings to tehir preferences.
+
+2. Get the working files which includes this README.md
     - Open a new window in VSCode
     - Choose your working directory
     - ```bash
@@ -214,13 +216,13 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 1. Use Photoshop or [Canva](https://www.canva.com/en_au/signup/?signupRedirect=%2Fedu-signup&loginRedirect=%2Fedu-signup&brandingVariant=edu) to design a simple square logo 1080px X 1080px named logo.png. Save all working files into the .workingdocuments directory.
 2. Design simplified app icon 512px X 512px names favicon.png.
 3. Web optimise the images using [TinyPNG](https://tinypng.com/).
-4. Save the files into the static/images folder.
+4. Save the files into the public/images folder.
 5. Rename the 512x512 icon to icon-512x512.png then resize and rename it as follows:
    - icon-128x128.png
    - icon-192x192.png
    - icon-384x384.png
    - icon-512x512.png
-6. Web optimise the images using [TinyPNG](https://tinypng.com/) and save them into the static/icons.
+6. Web optimise the images using [TinyPNG](https://tinypng.com/) and save them into the public/icons.
 
 > [!NOTE]
 > Graphic design is not the focus of this course, you should not spend excessive time designing logos and icons.
@@ -311,7 +313,7 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 
 ```html
     <nav>
-        <img src="static\images\logo.png" alt="VSCode Extensions site logo." />
+        <img src="images\logo.png" alt="VSCode Extensions site logo." />
         <h1>VSCode Extensions</h1>
         <ul class="topnav">
             <li><a href="#">Home</a></li>
@@ -322,11 +324,11 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ```
 
 ```bash
-    `cd ../../static/css`  
+    `cd ../../public/css`  
     `code style.css`
 ```  
 
-2. Style the menu by inserting this below your existing CSS in static/css/style.css.
+2. Style the menu by inserting this below your existing CSS in public/css/style.css.
 
 ```css
     nav {
@@ -371,7 +373,6 @@ Express is a light weight webserver designed specifically for Node.js web applic
 1. Insert the node.js to the backend index.js.
 
 ```js
-    
     // Insert additional backend js above the express server configuration
 
     const express = require("express");
@@ -382,7 +383,7 @@ Express is a light weight webserver designed specifically for Node.js web applic
     app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
     });
-    app.listen(8000, () => console.log("Server is running on Port 8000, visit http://localhost:80/ or http://127.0.0.1:80 to access your website") );
+    app.listen(80, () => console.log("Server is running on Port 80, visit http://localhost:80/ or http://127.0.0.1:80 to access your website") );
 ```
 
 2. Run the builtin webserver.
@@ -404,17 +405,23 @@ Express is a light weight webserver designed specifically for Node.js web applic
 #### Why JSON?
 [JSON (JavaScript Object Notation)](https://www.json.org/json-en.html) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is also very secure and the worflow used in this application ensures data integrity of the backend.
 
-### Choose your implementaion language:
+### Choose your backend implementaion language:
 
 <details>
     <summary><h3 style="display:inline">I want to use Python</h3></summary>
+
+1. Install the Python SQLite3 requirements
+
+    ```bash
+    pip install sqlite3
+    ```
 
     ```bash
     touch database_manager.py
     code database_manager.py
     ```
 
-1. Write the Python Script to query the SQL database and construct the JSON file.
+2. Write the Python Script to query the SQL database and construct the JSON file.
 
     ```python
     import sqlite3 as sql
@@ -423,20 +430,17 @@ Express is a light weight webserver designed specifically for Node.js web applic
     cur = con.cursor()
     data = cur.execute('SELECT * FROM extension').fetchall()
     con.close()
-    f = open("templates/partials/sucess_feedback.html", "w")
-    f = open("public/feedback.json", "w")
+    f = open("public/frontEndData.json", "w")
     f.write("[\n")
-    for row_num,row in enumerate(data):
-        f.write("{\n")
-        f.write(f'"PUT":"{row[1]}"\n')
-        
-        myString = myString + '{\n"extID":' + row.extID + ',\n"name":"' + row.name + '",\n"hyperlink":"' + row.hyperlink + '",\n"about":"' + row.about + '",\n"image":"' + row.image + '",\n"language":"' + row.language;
-        
+    for row in data:
+        f.write('{\n')
+        f.write(f'"extID":{row[0]},\n"name":"{row[1]}",\n"hyperlink":"{row[2]}",\n"about":"{row[3]}",\n"image":"{row[4]}",\n"language":"{row[5]}"\n')
         if row == data[len(data)-1]:
             f.write("}\n")
         else:
             f.write("},\n")
     f.write("]\n")
+    f.close()
 
     ```
 
@@ -515,6 +519,7 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
     ```bash
     cd public/js
+    touch app.js
     code app.js
     ```
 
@@ -551,7 +556,7 @@ Express is a light weight webserver designed specifically for Node.js web applic
     code style.css
 ```
 
-2. Style the cards by inserting this below your existing CSS in static/css/style.css.
+2. Style the cards by inserting this below your existing CSS in public/css/style.css.
 
 ```css
     .container {
@@ -623,7 +628,7 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
 ### Finish the PWA code so it is compliant to W3 web standards
 
-1. Take a screen shot of the website. Then size the image to 1080px X 1920px, web optimise the images using [TinyPNG](https://tinypng.com/) and save it to static/icons.
+1. Take a screen shot of the website. Then size the image to 1080px X 1920px, web optimise the images using [TinyPNG](https://tinypng.com/) and save it to public/icons.
 
 ```bash
     cd ..
@@ -720,7 +725,7 @@ Express is a light weight webserver designed specifically for Node.js web applic
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
         navigator.serviceWorker
-            .register("static/js/serviceWorker.js")
+            .register("js/serviceWorker.js")
             .then((res) => console.log("service worker registered"))
             .catch((err) => console.log("service worker not registered", err));
         });
@@ -737,16 +742,16 @@ Express is a light weight webserver designed specifically for Node.js web applic
 ```js
 const assets = [
         "/",
-        "static/css/style.css",
-        "static/js/app.js",
-        "static/images/logo.png",
-        "static/images/favicon.jpg",
-        "static/icons/icon-128x128.png",
-        "static/icons/icon-192x192.png",
-        "static/icons/icon-384x384.png",
-        "static/icons/icon-512x512.png",
-        "static/icons/desktop_screenshot.png",
-        "static/icons/mobile_screenshot.png"
+        "css/style.css",
+        "js/app.js",
+        "images/logo.png",
+        "images/favicon.jpg",
+        "icons/icon-128x128.png",
+        "icons/icon-192x192.png",
+        "icons/icon-384x384.png",
+        "icons/icon-512x512.png",
+        "icons/desktop_screenshot.png",
+        "icons/mobile_screenshot.png"
     ];
 
     const CATALOGUE_ASSETS = "catalogue-assets";
@@ -803,3 +808,74 @@ Validation is important to ensure the app is compliant to [W3 web standards](htt
 ![Screen cpature of Chrome Lighthouse report](/docs/README_resources/Chrome_Lighthouse_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
 2. Open your website in Edge and open developer tools (F12), look at the application report.
 ![Screen cpature of Chrome Lighthouse report](/docs/README_resources/Edge_Application_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
+
+---
+
+### Take your app further
+The following code snippets will help you create a simple form in the add.html page. This form is for people to add their details to an email database for updates on your catalogue. Less explict instructions have been provided, students are encouraged to practice their BASH, SQL, HTML, CSS & JS to bring it all together. The screen shot below is what the page should like like and when users submit the database is updated.
+
+![Screen capture of the finished PWA](/docs/README_resources/form_example.png "This is what your application will look like").
+
+1. Page specifications:
+    - Simple form where the user inserts their name and email address
+    - When they click submit the data base is updated
+    - The input form must be styled to be consistent with the rest of the website
+    - A message confirming submission is returned to the user
+2. SQL schema specifications:
+    - A new table called contact_list
+    - 3 columns
+      - id is the primary key and should increment automatically
+      - email must be unique
+      - name
+
+> [!NOTE]
+> You will need to catch the expection of a duplicate email
+
+```bash
+    npm npm install body-parser
+```
+
+```js
+    let bodyParser = require('body-parser');
+    app.use(bodyParser.urlencoded({extended: false}));
+```
+
+```js
+    res.sendFile(path.join(__dirname,'.public/add.html'));
+```
+
+```js
+    app.post('/add.html', function(req,res){
+    db.serialize(()=>{
+        db.run('INSERT INTO contact_list(email,name) VALUES(?,?)', [req.body.email, req.body.name], function(err) {
+            if (err) {
+                return console.log(err.message);
+            }
+            res.send("Thank you "+req.body.name+" we have added your email "+req.body.email+" to our distribution list.");
+        });
+    });
+    });
+```
+
+```html
+    <form action="/app.html" method="POST" class="box">
+      <div>
+        <label class="form-label">Email address</label>
+        <input name="email" type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" placeholder="name@example.com">
+      </div>
+      <div>
+        <label class="form-label">Name</label>
+        <textarea class="form-control" name="name" id="name" rows="1"></textarea>
+      </div>
+      <br/>
+      <div>
+        <button type="submit" class="btn">Submit</button>
+      </div>
+    </form>
+```
+
+```css
+    .form-control {
+
+    }
+```
