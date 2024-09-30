@@ -33,8 +33,13 @@ This screen capture shows how the final PWA will render to the user.
 4. CSS Basics
 5. Python
 
+## Open a GIT BASH terminal
+
 > [!NOTE]
 > From here in, you should aim to run all commands from the CLI. You are discouraged from left/right clicking the GUI. You will find it feels slow at first but through disciplined use, you will become much quicker and more accurate with CLI commands than GUI controls.
+
+Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> and choose Git Bash from the menu option in the top right of the terminal shell.
+![Screen capture of the menu options for terminals](/docs/README_resources/git_bash_shell.png "Choose Git Bash from the list")
 
 ## STEPS TO BUILDING YOUR FIRST PWA
 
@@ -51,7 +56,13 @@ This screen capture shows how the final PWA will render to the user.
 > [!TIP]
 > Alternatively you can fork the [template repository](https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template) to your own GitHub account and open it in a Codespace in which all dependencis and extensions will be automatically installed.
 
-1. Install necessary depenencies.
+1. Inititalise a node application
+
+```bash
+    npm init -y
+```
+
+2. Install necessary depenencies.
 
 ```bash
     npm install sqlite3
