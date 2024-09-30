@@ -13,10 +13,12 @@ Because PWAs are websites, they have the same basic features as any other websit
     - A service worker, which, at a minimum, provides a basic offline experience.
     - A set of icons and screenshots that are required when installing it as a native application.
 The below image illustrates how the servicework manages online and offline behaviour.
-![A highlevel illustration of teh service worker](/docs/README_resources/Progressive-Web-Apps-Architecture.png "The service worker handles the initial requests and sets teh behaviour depending on if the app is on or offline.")
+
+![A highlevel illustration of the service worker](/docs/README_resources/Progressive-Web-Apps-Architecture.png "The service worker handles the initial requests and sets the behaviour depending on if the app is on or offline.")
 
 ## Your end product
 This screen capture shows how the final PWA will render to the user.
+
 ![Screen capture of the finished PWA](/docs/README_resources/final_app.png "This is what your application will look like")
 
 ## Requirements
@@ -39,13 +41,14 @@ This screen capture shows how the final PWA will render to the user.
 > From here in, you should aim to run all commands from the CLI. You are discouraged from left/right clicking the GUI. You will find it feels slow at first but through disciplined use, you will become much quicker and more accurate with CLI commands than GUI controls.
 
 Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> and choose Git Bash from the menu option in the top right of the terminal shell.
+
 ![Screen capture of the menu options for terminals](/docs/README_resources/git_bash_shell.png "Choose Git Bash from the list")
 
 ## STEPS TO BUILDING YOUR FIRST PWA
 
 ### Setup your environment
 
-1. Common VScode settings are set in .vscode/settings.json and default plugins are in .devcontainer/devcontainer.json (devcontainer assumes you have the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) installed.). Those with VSCode experience should adjust any settings to tehir preferences.
+1. Common VScode settings are set in .vscode/settings.json and default plugins are in .devcontainer/devcontainer.json (devcontainer assumes you have the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) installed.). Those with VSCode experience should adjust any settings to their preferences.
 
 2. Get the working files which includes this README.md
     - Open a new window in VSCode
