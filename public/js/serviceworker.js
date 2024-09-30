@@ -1,15 +1,15 @@
 const assets = [
         "/",
-        "static/css/style.css",
-        "static/js/app.js",
-        "static/images/logo.png",
-        "static/images/favicon.jpg",
-        "static/icons/icon-128x128.png",
-        "static/icons/icon-192x192.png",
-        "static/icons/icon-384x384.png",
-        "static/icons/icon-512x512.png",
-        "static/icons/desktop_screenshot.png",
-        "static/icons/mobile_screenshot.png"
+        "css/style.css",
+        "js/app.js",
+        "images/logo.png",
+        "images/favicon.jpg",
+        "icons/icon-128x128.png",
+        "icons/icon-192x192.png",
+        "icons/icon-384x384.png",
+        "icons/icon-512x512.png",
+        "icons/desktop_screenshot.png",
+        "icons/mobile_screenshot.png"
     ];
 
     const CATALOGUE_ASSETS = "catalogue-assets";
