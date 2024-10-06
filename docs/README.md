@@ -9,9 +9,15 @@ A [Progressive Web Apps (PWAs)](https://developer.mozilla.org/en-US/docs/Web/Pro
 ### Technical features of PWAs
 
 Because PWAs are websites, they have the same basic features as any other website: at least one HTML page, which loads CSS and JavaScript. Javascript is the language of the web and is exclusivly used for client side front end, python in the web context can only be used in the back end. Like a normal website, the JavaScript loaded by the page has a global Window object and can access all the Web APIs that are available through that object. The PWA standard as defined by [W3C Standards](https://www.w3.org/standards/) has some specific features additonal to a website:
-    - A web app manifest file, which, at a minimum, provides information that the browser needs to install the PWA, such as the app name and icon.
-    - A service worker, which, at a minimum, provides a basic offline experience.
-    - A set of icons and screenshots that are required when installing it as a native application.
+
+| Feature | Purpose |
+| ------ | ------- |
+| manifest.json | A app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different sized viewports. |
+| serviceworker.js | A service worker, which, at a minimum, manages the caching that enables a online and offline experience whilst also interfacing with API's such as the [notification web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). It's important to udnerstand that this JS file cannot control the DOM of the application. |
+| icons & screanshots | A set of icons and screenshots that are used in when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed. |
+| Installable | Because of the information contained in the manifest.json all PWA's can be installed like a native app. They can also be packaged and uploaded to the Google, Microsoft & Apple app stores. |
+| Cached locally | Because the service worker details all apps and pages to be cached (all pages must have a *.html name) the app and it's resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._ |
+
 The below image illustrates how the servicework manages online and offline behaviour.
 
 ![A highlevel illustration of the service worker](/docs/README_resources/Progressive-Web-Apps-Architecture.png "The service worker handles the initial requests and sets the behaviour depending on if the app is on or offline.")
