@@ -61,7 +61,7 @@ This screen capture shows how the final PWA will be rendered to the user.
 | [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf) | [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) |
 | | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) |
 | | [miramac.vscode-exec-node](https://marketplace.visualstudio.com/items?itemName=miramac.vscode-exec-node) |
-| | [yy0931.vscode-sqlite3-editor]([https://marketplace.visualstudio.com/items?itemName=miramac.vscode-exec-node](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor)) |
+| | [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) |
 
 2. Open a GIT BASH terminal
 
