@@ -20,7 +20,7 @@
 			"editor.defaultFormatter": "esbenp.prettier-vscode",
 			"[python]": {
     			"editor.defaultFormatter": "ms-python.black-formatter"
-			}
+			},
 			"editor.fontSize": 18,
 			"terminal.integrated.defaultProfile.windows": "Git Bash",
 			"window.restoreWindows": "preserve",
@@ -53,5 +53,5 @@
       "label": "Application"
     }
   },
-  "forwardPorts": [3000]
+  "forwardPorts": [5000]
 }
