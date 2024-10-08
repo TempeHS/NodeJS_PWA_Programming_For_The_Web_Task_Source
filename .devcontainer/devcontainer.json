@@ -7,9 +7,6 @@
   "waitFor": "onCreateCommand",
   "updateContentCommand": "npm install -r requirements.txt",
   "postCreateCommand": "",
-  "postAttachCommand": {
-    "server": "npm start"
-  },
   "customizations": {
     "vscode": {
       "settings": {
