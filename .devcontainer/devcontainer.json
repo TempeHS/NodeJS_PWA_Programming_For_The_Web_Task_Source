@@ -26,19 +26,18 @@
     			}
 			},
 			"extensions": [
-				"yy0931.vscode-sqlite3-editor",
-				"ecmel.vscode-html-css",
-				"miramac.vscode-exec-node",
 				"McCarter.start-git-bash",
+				"alexcvzz.vscode-sqlite",
+				"medo64.render-crlf",		
+				"ecmel.vscode-html-css",
 				"ms-vscode.js-debug",
 				"dbaeumer.vscode-eslint",
-				"alexcvzz.vscode-sqlite",
+				"miramac.vscode-exec-node",
+				"yy0931.vscode-sqlite3-editor",
 				"oderwat.indent-rainbow",
 				"ms-vscode-remote.remote-containers",
 				"ms-vscode-remote.remote-wsl",
 				"GitHub.codespaces",
-				"miramac.vscode-exec-node",
-				"McCarter.start-git-bash",
 				"ms-vscode-remote.remote-wsl",
 				"ms-azuretools.vscode-docker"
 			]
