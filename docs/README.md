@@ -1,6 +1,6 @@
 # INTRODUCTION TO FLASK AND PROGRESSIVE WEB APPS TUTORIAL
 
-This guided tutorial will introduce HSC Software Engineering to the basics of developing websites with the [Node.js](https://nodejs.org/en). The tutorial has been specifically designed for requirements in the [NESA Software Engineering Syllabus](https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022/content/n12/fa6aab137e) and for students in NSW Department of Education schools using eT4L computers.
+This guided tutorial will introduce HSC Software Engineering to the basics of developing websites with the [node.JS framework](https://nodejs.org/en). The tutorial has been specifically designed for requirements in the [NESA Software Engineering Syllabus](https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022/content/n12/fa6aab137e) and for students in NSW Department of Education schools using eT4L computers.
 
 A [list of popular PWA's](https://business.adobe.com/blog/basics/progressive-web-app-examples) (including Ube, Spotify, Facebook and Google Maps)
 
@@ -10,22 +10,22 @@ A [Progressive Web Apps (PWAs)](https://developer.mozilla.org/en-US/docs/Web/Pro
 
 ### Technical features of PWAs
 
-Because PWAs are websites, they have the same basic features as any other website: at least one HTML page, which loads CSS and JavaScript. Javascript is the language of the web and is exclusivly used for client side front end, python in the web context can only be used in the back end. Like a normal website, the JavaScript loaded by the page has a global Window object and can access all the Web APIs that are available through that object. The PWA standard as defined by [W3C Standards](https://www.w3.org/standards/) has some specific features additonal to a website:
+Because PWAs are websites, they have the same basic features as any other website: at least one HTML page, which loads CSS and JavaScript. Javascript is the language of the web and is exclusively used for the client-side front end; python, in the web context, can only be used in the back end. Like a normal website, the JavaScript loaded by the page has a global Window object and can access all the Web APIs that are available through that object. The PWA standard as defined by [W3C Standards](https://www.w3.org/standards/) has some specific features additional to a website:
 
 | Feature | Purpose |
 | ------ | ------- |
-| manifest.json | A app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different sized viewports. |
-| serviceworker.js | A service worker, which, at a minimum, manages the caching that enables a online and offline experience whilst also interfacing with API's such as the [notification web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). It's important to udnerstand that this JS file cannot control the DOM of the application. |
-| icons & screanshots | A set of icons and screenshots that are used in when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed. |
+| manifest.json | An app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different-sized viewports. |
+| serviceworker.js | A service worker, which, at a minimum, manages the caching that enables an online and offline experience whilst also interfacing with API's such as the [notification web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). It's important to udnerstand that this JS file cannot control the DOM of the application. |
+| Icons & screenshots | A set of icons and screenshots that are used when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed. |
 | Installable | Because of the information contained in the manifest.json all PWA's can be installed like a native app. They can also be packaged and uploaded to the Google, Microsoft & Apple app stores. |
-| Cached locally | Because the service worker details all apps and pages to be cached (all pages must have a *.html name) the app and it's resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._ |
+| Cached locally | Because the service worker details all apps and pages to be cached (all pages must have a *.html name), the app and its resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._ |
 
 The below image illustrates how the servicework manages online and offline behaviour.
 
 ![A highlevel illustration of the service worker](/docs/README_resources/Progressive-Web-Apps-Architecture.png "The service worker handles the initial requests and sets the behaviour depending on if the app is on or offline.")
 
 ## Your end product
-This screen capture shows how the final PWA will render to the user.
+This screen capture shows how the final PWA will be rendered to the user.
 
 ![Screen capture of the finished PWA](/docs/README_resources/final_app.png "This is what your application will look like")
 
@@ -43,24 +43,37 @@ This screen capture shows how the final PWA will render to the user.
 4. CSS Basics
 5. Python
 
-## Open a GIT BASH terminal
+## STEPS TO BUILDING YOUR FIRST PWA
+
+### Setup your environment
+
+![Screen recording of setting up VSCode](/docs/README_resources/get_vscode_started.gif "Follow these steps to setup VSCode")
 
 > [!NOTE]
-> From here in, you should aim to run all commands from the CLI. You are discouraged from left/right clicking the GUI. You will find it feels slow at first but through disciplined use, you will become much quicker and more accurate with CLI commands than GUI controls.
+> Helpful VSCode settings are configured in [.vscode/settings.json](/.vscode/settings.json) which will automatically apply if you are not using a custom profile. If you are using a custom profile, it is suggested you manually apply those settings to your profile, especially the \*.md file association, so the README.md default opens in preview mode and setting _bash_ as your default terminal.
+
+1. Install the necessary extensions for this tutorial.
+
+| Required Extensions | Suggested nodeJS Extensions |
+| ------ | ------ |
+| [ms-python.python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) | [miramac.vscode-exec-node](https://marketplace.visualstudio.com/items?itemName=miramac.vscode-exec-node) |
+| [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash) | [ecmel.vscode-html-css](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css) |
+| [alexcvzz.vscode-sqlite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug) |
+| [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf) | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) |
+
+2. Open a GIT BASH terminal
+
+> [!NOTE]
+> From now on, you should aim to run all commands from the CLI. You are discouraged from left/right clicking the GUI. You will find it feels slow at first, but through disciplined use, you will become much quicker and more accurate with CLI commands than GUI controls.
 
 Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> and choose Git Bash from the menu option in the top right of the terminal shell.
 
 ![Screen capture of the menu options for terminals](/docs/README_resources/git_bash_shell.png "Choose Git Bash from the list")
 
-## STEPS TO BUILDING YOUR FIRST PWA
-
-### Setup your environment
-
-1. Common VScode settings are set in .vscode/settings.json and default plugins are in .devcontainer/devcontainer.json (devcontainer assumes you have the [Docker extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) installed.). Those with VSCode experience should adjust any settings to their preferences.
-
-2. Get the working files which includes this README.md
+3. Get the working files which includes this README.md
     - Open a new window in VSCode
     - Choose your working directory
+
     - ```bash
         git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
         cd NodeJS_PWA_Programming_For_The_Web_Task_Template
@@ -75,21 +88,12 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
     npm init -y
 ```
 
-2. Install necessary depenencies.
+5. Install necessary depenencies.
 
 ```bash
     npm install sqlite3
     npm install express
 ```
-
-3. Install specically required extensions for this tutorial.
-   - [ms-vscode.js-debug-nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)
-   - [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash)
-   - [alexcvzz.vscode-sqlite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
-   - [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)
-
-> [!TIP]
-> Other extensions such as rainbow indentor and linting tools are also recommended to improve your IDE experience with VSCode.
 
 ---
 

@@ -1,8 +1,5 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "HTML, CSS & JS",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	"hostRequirements": {
     	"cpus": 4
@@ -14,11 +11,7 @@
     	"server": "npm update",
 		"server": "npm start"
   	}, 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-	// Configure tool-specific properties.
 	"customizations": {
-		// Configure properties specific to VS Code.
 		"vscode": {
 			"settings": {
 				"files.autoSave": "onFocusChange",
@@ -30,11 +23,11 @@
 			"extensions": [
 				"yy0931.vscode-sqlite3-editor",
 				"ecmel.vscode-html-css",
+				"miramac.vscode-exec-node",
 				"McCarter.start-git-bash",
-				"ms-vscode.js-debug-nightly",
+				"ms-vscode.js-debug",
 				"dbaeumer.vscode-eslint",
 				"alexcvzz.vscode-sqlite",
-				"ritwickdey.LiveServer",
 				"oderwat.indent-rainbow",
 				"ms-vscode-remote.remote-containers",
 				"ms-vscode-remote.remote-wsl",
@@ -46,13 +39,6 @@
 			]
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [9000],
-	// Use 'portsAttributes' to set default properties for specific forwarded ports. 
-	// More info: https://containers.dev/implementors/json_reference/#port-attributes
 	"portsAttributes": {},
-	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "npm install -r requirements.txt"
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
 }
