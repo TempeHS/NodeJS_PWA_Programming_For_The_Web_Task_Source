@@ -12,19 +12,20 @@ A [Progressive Web Apps (PWAs)](https://developer.mozilla.org/en-US/docs/Web/Pro
 
 Because PWAs are websites, they have the same basic features as any other website: at least one HTML page, which loads CSS and JavaScript. Javascript is the language of the web and is exclusively used for the client-side front end; python, in the web context, can only be used in the back end. Like a normal website, the JavaScript loaded by the page has a global Window object and can access all the Web APIs that are available through that object. The PWA standard as defined by [W3C Standards](https://www.w3.org/standards/) has some specific features additional to a website:
 
-| Feature | Purpose |
-| ------ | ------- |
-| manifest.json | An app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different-sized viewports. |
-| serviceworker.js | A service worker, which, at a minimum, manages the caching that enables an online and offline experience whilst also interfacing with API's such as the [notification web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). It's important to udnerstand that this JS file cannot control the DOM of the application. |
-| Icons & screenshots | A set of icons and screenshots that are used when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed. |
-| Installable | Because of the information contained in the manifest.json all PWA's can be installed like a native app. They can also be packaged and uploaded to the Google, Microsoft & Apple app stores. |
-| Cached locally | Because the service worker details all apps and pages to be cached (all pages must have a *.html name), the app and its resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._ |
+| Feature             | Purpose                                                                                                                                                                                                                                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| manifest.json       | An app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different-sized viewports.                                                                                                                                 |
+| serviceworker.js    | A service worker, which, at a minimum, manages the caching that enables an online and offline experience whilst also interfacing with API's such as the [notification web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). It's important to udnerstand that this JS file cannot control the DOM of the application. |
+| Icons & screenshots | A set of icons and screenshots that are used when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed.                                                                                                                           |
+| Installable         | Because of the information contained in the manifest.json all PWA's can be installed like a native app. They can also be packaged and uploaded to the Google, Microsoft & Apple app stores.                                                                                                                                              |
+| Cached locally      | Because the service worker details all apps and pages to be cached (all pages must have a \*.html name), the app and its resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._                                            |
 
 The below image illustrates how the servicework manages online and offline behaviour.
 
 ![A highlevel illustration of the service worker](/docs/README_resources/Progressive-Web-Apps-Architecture.png "The service worker handles the initial requests and sets the behaviour depending on if the app is on or offline.")
 
 ## Your end product
+
 This screen capture shows how the final PWA will be rendered to the user.
 
 ![Screen capture of the finished PWA](/docs/README_resources/final_app.png "This is what your application will look like")
@@ -54,14 +55,15 @@ This screen capture shows how the final PWA will be rendered to the user.
 
 1. Install the necessary extensions for this tutorial.
 
-| Required Extensions | Suggested nodeJS Extensions |
-| ------ | ------ |
-| [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash) | [ecmel.vscode-html-css](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css) |
-| [alexcvzz.vscode-sqlite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug) |
-| [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf) | [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) |
-| | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow) |
-| | [miramac.vscode-exec-node](https://marketplace.visualstudio.com/items?itemName=miramac.vscode-exec-node) |
-| | [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) |
+| Required Extensions                                                                                    | Suggested nodeJS Extensions                                                                                      |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash) | [ecmel.vscode-html-css](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)               |
+| [alexcvzz.vscode-sqlite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)   | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug)                     |
+| [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)           | [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)\*           |
+|                                                                                                        | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)             |
+|                                                                                                        | [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) |
+
+_\*You will need to configure esbenp.prettier-vscode as your default formatter_
 
 2. Open a GIT BASH terminal
 
@@ -73,13 +75,14 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
 ![Screen capture of the menu options for terminals](/docs/README_resources/git_bash_shell.png "Choose Git Bash from the list")
 
 3. Get the working files, which include this README.md
-    - Open a new window in VSCode
-    - Choose your working directory
 
-    - ```bash
-        git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
-        cd NodeJS_PWA_Programming_For_The_Web_Task_Template
-      ```
+   - Open a new window in VSCode
+   - Choose your working directory
+
+   - ```bash
+       git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
+       cd NodeJS_PWA_Programming_For_The_Web_Task_Template
+     ```
 
 > [!TIP]
 > Alternatively, you can fork the [template repository](https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template) to your own GitHub account and open it in a Codespace in which all dependencies and extensions will be automatically installed.
@@ -123,14 +126,14 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
     ├── .workingdocuments
     ├── public
     │   ├── css
-    │   ├── icons  
-    │   ├── images  
-    │   ├── js  
+    │   ├── icons
+    │   ├── images
+    │   ├── js
     │   ├── index.html
-    │   ├── about.html    
+    │   ├── about.html
     │   ├── manifest.json
-    │   ├── serviceWorker.js  
-    ├── LICENSE  
+    │   ├── serviceWorker.js
+    ├── LICENSE
     └── index.js
 ```
 
@@ -146,9 +149,9 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 4. Run a BASH script to read the text file and create the folders listed in it.
 
 ```bash
-    while read -r line; do   
-    echo $line  
-    mkdir -p $line  
+    while read -r line; do
+    echo $line
+    mkdir -p $line
     done < folders.txt
 ```
 
@@ -162,15 +165,16 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 6. Run a BASH script to read the text file and create the files listed in it.
 
 ```bash
-    while read -r line; do   
-    echo $line  
-    touch -p $line  
+    while read -r line; do
+    echo $line
+    touch -p $line
     done < files.txt\
 ```
 
 > [!IMPORTANT]
 >
->—The last list item needs a line ending, so make sure the last line in the file is blank.
+> —The last list item needs a line ending, so make sure the last line in the file is blank.
+>
 > - You will find that all file and folder names have an unwanted `space` character at the end. This is because you are using a BASH emulator on the Windows operating system. Bash is a Unix language that uses [LF Unicode character 000A while Windows uses CRLF Unicode characters 000D and 000A](https://learn.microsoft.com/en-us/visualstudio/ide/encodings-and-line-breaks?view=vs-2022). Because you have installed the [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf) extension, click on `CRLF` in the bottom bar of VSCode and choose `LF` to change the line ending before running your BASH script.
 
 ---
@@ -261,29 +265,28 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 5. Insert the basic HTML structure in your index.html file.
 
 ```html
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
-        <link rel="stylesheet" href="css/style.css" />
-        <title>VSCode Extension Catalogue</title>
-        <link rel="manifest" href="manifest.json" />
-        <link rel="icon" type="image/x-icon" href="images/favicon.png">
-    </head>
-    <body>
-        <main>
-            <!-- NAV START -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>VSCode Extension Catalogue</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+  </head>
+  <body>
+    <main>
+      <!-- NAV START -->
 
-            <!-- NAV END -->            
-            <div class="container">
-            </div>
-        </main>
-        <script src="js/app.js"></script>
-    </body>
-    </html>
+      <!-- NAV END -->
+      <div class="container"></div>
+    </main>
+    <script src="js/app.js"></script>
+  </body>
+</html>
 ```
 
 ---
@@ -299,23 +302,23 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 1. Insert the css code into css/style.css.
 
 ```css
-    @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        background: #fdfdfd;
-        font-family: "Nunito", sans-serif;
-        font-size: 1rem;
-    }
-    main {
-        max-width: 900px;
-        margin: auto;
-        padding: 0.5rem;
-        text-align: center;
-    }
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #fdfdfd;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+}
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 0.5rem;
+  text-align: center;
+}
 ```
 
 ---
@@ -330,57 +333,58 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 1. Insert the menu HTML into index.html between the comment placeholders.
 
 ```html
-    <nav>
-        <img src="images\logo.png" alt="VSCode Extensions site logo." />
-        <h1>VSCode Extensions</h1>
-        <ul class="topnav">
-            <li><a href="#">Home</a></li>
-            <li><a href="add.html">Add me</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav> 
+<nav>
+  <img src="images\logo.png" alt="VSCode Extensions site logo." />
+  <h1>VSCode Extensions</h1>
+  <ul class="topnav">
+    <li><a href="#">Home</a></li>
+    <li><a href="add.html">Add me</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
 ```
 
 ```bash
-    `cd ../../public/css`  
+    `cd ../../public/css`
     `code style.css`
-```  
+```
 
 2. Style the menu by inserting this below your existing CSS in public/css/style.css.
 
 ```css
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    nav img {
-        height:100px;
-    }
-    nav ul {
-        list-style: none;
-        display: flex;
-    }
-    nav li {
-        margin-right: 1rem;
-    }
-    nav ul li a {
-        text-decoration-line:none;
-        text-transform: uppercase; 
-        color: #393b45;
-    }
-    nav ul li a:hover {
-        color: #14E6DD;
-    }
-    nav h1 {
-        color: #106D69;
-        margin-bottom: 0.5rem;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav img {
+  height: 100px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+}
+nav li {
+  margin-right: 1rem;
+}
+nav ul li a {
+  text-decoration-line: none;
+  text-transform: uppercase;
+  color: #393b45;
+}
+nav ul li a:hover {
+  color: #14e6dd;
+}
+nav h1 {
+  color: #106d69;
+  margin-bottom: 0.5rem;
+}
 ```
 
 <HR
 
 ### Render your website
+
 Express is a light weight webserver designed specifically for Node.js web applications. You have already installed it when you set up your environment.
 
 ```bash
@@ -391,17 +395,21 @@ Express is a light weight webserver designed specifically for Node.js web applic
 1. Insert the node.js to the backend index.js.
 
 ```js
-    // Insert additional backend js above the express server configuration
+// Insert additional backend js above the express server configuration
 
-    const express = require("express");
-    const path = require("path");
-    const app = express();
-    app.use(express.static(path.join(__dirname, "public")));
-    
-    app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/index.html"));
-    });
-    app.listen(5000, () => console.log("Server is running on Port 5000, visit http://localhost:5000/ or http://127.0.0.1:5000 to access your website") );
+const express = require("express");
+const path = require("path");
+const app = express();
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "public/index.html"));
+});
+app.listen(5000, () =>
+  console.log(
+    "Server is running on Port 5000, visit http://localhost:5000/ or http://127.0.0.1:5000 to access your website"
+  )
+);
 ```
 
 2. Run the built-in webserver.
@@ -416,11 +424,12 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
 ### Query your SQL database and migrate the data for the frontend
 
->[!NOTE]
+> [!NOTE]
 > From here students have two choices, they can use their existing Python skills or new JS skills. Either way, students will be querying a table in data_source.db and then constructing a JSON file that will be pushed to the frontend, ready for rending by a frontend JS script.
 > If you choose the JS method, you should refer to the Python method in the future as a helpful way to have more complex Python programs in the backend and create a simple responsive GUI using HTML/CSS/JS.
 
 #### Why JSON?
+
 [JSON (JavaScript Object Notation)](https://www.json.org/json-en.html) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is also very secure and the worflow used in this application ensures data integrity of the backend.
 
 ### Choose your backend implementation language:
@@ -430,39 +439,39 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
 1. Install the Python SQLite3 requirements
 
-    ```bash
-    pip install sqlite3
-    ```
+   ```bash
+   pip install sqlite3
+   ```
 
-    ```bash
-    touch database_manager.py
-    code database_manager.py
-    ```
+   ```bash
+   touch database_manager.py
+   code database_manager.py
+   ```
 
 2. Write the Python Script to query the SQL database and construct the JSON file.
 
-    ```python
-    import sqlite3 as sql
+   ```python
+   import sqlite3 as sql
 
-    con = sql.connect(".database/data_source.db")
-    cur = con.cursor()
-    data = cur.execute('SELECT * FROM extension').fetchall()
-    con.close()
-    f = open("public/frontEndData.json", "w")
-    f.write("[\n")
-    for row in data:
-        f.write('{\n')
-        f.write(f'"extID":{row[0]},\n"name":"{row[1]}",\n"hyperlink":"{row[2]}",\n"about":"{row[3]}",\n"image":"{row[4]}",\n"language":"{row[5]}"\n')
-        if row == data[len(data)-1]:
-            f.write("}\n")
-        else:
-            f.write("},\n")
-    f.write("]\n")
-    f.close()
+   con = sql.connect(".database/data_source.db")
+   cur = con.cursor()
+   data = cur.execute('SELECT * FROM extension').fetchall()
+   con.close()
+   f = open("public/frontEndData.json", "w")
+   f.write("[\n")
+   for row in data:
+       f.write('{\n')
+       f.write(f'"extID":{row[0]},\n"name":"{row[1]}",\n"hyperlink":"{row[2]}",\n"about":"{row[3]}",\n"image":"{row[4]}",\n"language":"{row[5]}"\n')
+       if row == data[len(data)-1]:
+           f.write("}\n")
+       else:
+           f.write("},\n")
+   f.write("]\n")
+   f.close()
 
-    ```
+   ```
 
->[!NOTE]
+> [!NOTE]
 > This approach is different from the Pythonic way to generate a JSON file. Because this approach is about algorithm design, it models how an algorithm can easily migrate data from one format/structure to another. If you know the Pythonic way, feel free to implement it. However, software engineers should understand and be able to replicate data migration algorithms.
 
     ```bash
@@ -471,17 +480,17 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
 2. Insert this js above the express setup in index.js to run the Python program.
 
-    ```js
-    const spawn = require("child_process").spawn;
-    // you can add arguments with spawn('python',["path/to/script.py", arg1, arg2, ...])
-    const pythonProcess = spawn('python',["database_manager.py"]);
-    ```
+   ```js
+   const spawn = require("child_process").spawn;
+   // you can add arguments with spawn('python',["path/to/script.py", arg1, arg2, ...])
+   const pythonProcess = spawn("python", ["database_manager.py"]);
+   ```
 
 3. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
 
-    ```bash
-    node index.js
-    ```
+   ```bash
+   node index.js
+   ```
 
 </details>
 
@@ -494,40 +503,53 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
 1. Write the Python Script to query the SQL database and construct the JSON file.
 
-    ```js
-    const sqlite3 = require('sqlite3').verbose();
-    const db = new sqlite3.Database('.database/data_source.db');
+   ```js
+   const sqlite3 = require("sqlite3").verbose();
+   const db = new sqlite3.Database(".database/data_source.db");
 
-    let myString = '[\n';
-    db.all("SELECT * FROM extension", function(err, rows) {
-        let myCounter = 0;
-        rows.forEach(function (row) {
-        // for debugging
-        // console.log(row.extID + ": " + row.name + ": " + row.hyperlink + ": " + row.about + ": " + row.image + ": " + row.language);  
-        myString = myString + '{\n"extID":' + row.extID + ',\n"name":"' + row.name + '",\n"hyperlink":"' + row.hyperlink + '",\n"about":"' + row.about + '",\n"image":"' + row.image + '",\n"language":"' + row.language;
-        myCounter++;
-        if (myCounter == rows.length) {
-            myString = myString + '"\n}\n';
-        } else {
-            myString = myString + '"\n},\n';
-        }
-    });
+   let myString = "[\n";
+   db.all("SELECT * FROM extension", function (err, rows) {
+     let myCounter = 0;
+     rows.forEach(function (row) {
+       // for debugging
+       // console.log(row.extID + ": " + row.name + ": " + row.hyperlink + ": " + row.about + ": " + row.image + ": " + row.language);
+       myString =
+         myString +
+         '{\n"extID":' +
+         row.extID +
+         ',\n"name":"' +
+         row.name +
+         '",\n"hyperlink":"' +
+         row.hyperlink +
+         '",\n"about":"' +
+         row.about +
+         '",\n"image":"' +
+         row.image +
+         '",\n"language":"' +
+         row.language;
+       myCounter++;
+       if (myCounter == rows.length) {
+         myString = myString + '"\n}\n';
+       } else {
+         myString = myString + '"\n},\n';
+       }
+     });
 
-    // console.log(myString);
-    var fs = require('fs');
-    fs.writeFile("public/frontEndData.json", myString + "]", function(err) {
-        if (err) {
-            console.log(err);
-        }
-    });
-    });
-    ```
+     // console.log(myString);
+     var fs = require("fs");
+     fs.writeFile("public/frontEndData.json", myString + "]", function (err) {
+       if (err) {
+         console.log(err);
+       }
+     });
+   });
+   ```
 
-3. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
+2. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
 
-    ```bash
-    node index.js
-    ```
+   ```bash
+   node index.js
+   ```
 
 </details>
 
@@ -542,32 +564,32 @@ Express is a light weight webserver designed specifically for Node.js web applic
     ```
 
 1. Insert the js into public/js/app.js; this JS reads the JSON file and inserts it as HTML into the .container class `<DIV>`.
-    ```js
-    let result = "";
-    fetch('./frontEndData.json')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        appendData(data);
-    })
-    .catch(function (err) {
-        console.log('error: ' + err);
-    });
-    function appendData(data) {
-        data.forEach(({ name, image, hyperlink, about, language } = rows) => {
-        result += `
-            <div class="card">
-            <img class="card-image" src="${image}" alt="Product image for the ${name} VSCode extension."/>
-            <h1 class="card-name">${name}</h1>
-            <p class="card-about">${about}</p>
-            <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
-            </div>
-            `;
-        });
-    document.querySelector(".container").innerHTML = result;
-    }
-    ```
+   ```js
+   let result = "";
+   fetch("./frontEndData.json")
+     .then(function (response) {
+       return response.json();
+     })
+     .then(function (data) {
+       appendData(data);
+     })
+     .catch(function (err) {
+       console.log("error: " + err);
+     });
+   function appendData(data) {
+     data.forEach(({ name, image, hyperlink, about, language } = rows) => {
+       result += `
+           <div class="card">
+           <img class="card-image" src="${image}" alt="Product image for the ${name} VSCode extension."/>
+           <h1 class="card-name">${name}</h1>
+           <p class="card-about">${about}</p>
+           <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
+           </div>
+           `;
+     });
+     document.querySelector(".container").innerHTML = result;
+   }
+   ```
 
 ```bash
     cd ../css
@@ -577,69 +599,70 @@ Express is a light weight webserver designed specifically for Node.js web applic
 2. Style the cards by inserting this below your existing CSS in public/css/style.css.
 
 ```css
-    .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-        grid-gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        padding: 1rem 0;
-    }
-    .card {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 17rem;
-        background: #fff;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-        border-radius: 10px;
-        margin: auto;
-        overflow: hidden;
-    }
-    .card-image {
-        width: 100%;
-        height: 15rem;
-        object-fit: cover;
-    }
-    .card-name {
-        color: #222;
-        font-weight: 700;
-        text-transform: capitalize;
-        font-size: 1.1rem;
-        margin-top: 0.5rem;
-    }
-    .card-about {
-        text-overflow: ellipsis;
-        width: 15rem;
-        white-space: nowrap;
-        overflow: hidden;
-        margin-bottom:1rem;
-    }
-    .btn {
-        border:none;
-        background:none;
-        border-radius:5px;
-        box-shadow:1px 1px 2px rgba(21, 21, 21, 0.1);
-        cursor:pointer;
-        font-size:1.25rem;
-        margin:0 1rem;
-        padding:.25rem 2rem;
-        transition:all .25s ease-in-out;
-        background: hsl(110,21%,93%);
-        color:hsl(141,100%,22%);
-        margin-bottom:1rem;
-    }
-        .btn:focus, .btn:hover {
-        box-shadow:1px 1px 2px rgba(21, 21, 21, 0.2);
-        background: hsl(111,21%,86%);
-    }
-    .about-container {
-        font-size:1.25rem;
-        margin-top:2rem;
-        text-align: justify;
-        text-justify: inter-word;
-    }
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 1rem 0;
+}
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 17rem;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+  margin: auto;
+  overflow: hidden;
+}
+.card-image {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+.card-name {
+  color: #222;
+  font-weight: 700;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+.card-about {
+  text-overflow: ellipsis;
+  width: 15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.btn {
+  border: none;
+  background: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.1);
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin: 0 1rem;
+  padding: 0.25rem 2rem;
+  transition: all 0.25s ease-in-out;
+  background: hsl(110, 21%, 93%);
+  color: hsl(141, 100%, 22%);
+  margin-bottom: 1rem;
+}
+.btn:focus,
+.btn:hover {
+  box-shadow: 1px 1px 2px rgba(21, 21, 21, 0.2);
+  background: hsl(111, 21%, 86%);
+}
+.about-container {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
 ```
 
 ---
@@ -656,80 +679,80 @@ Express is a light weight webserver designed specifically for Node.js web applic
 2. Configure the manifest.json to the PWA standard by inserting the JSON below and validating the JSON with [jsonlint](https://jsonlint.com/). The manifest.json sets the configuration for the installation and caching of the PWA.
 
 ```json
+{
+  "name": "VSCode Extension Catalogue",
+  "short_name": "vscodeextcat",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfdfd",
+  "theme_color": "#14E6DD",
+  "orientation": "landscape-primary",
+  "icons": [
     {
-        "name": "VSCode Extension Catalogue",
-        "short_name": "vscodeextcat",
-        "start_url": "/",
-        "display": "standalone",
-        "background_color": "#fdfdfd",
-        "theme_color": "#14E6DD",
-        "orientation": "landscape-primary",
-        "icons": [
-        {
-            "src": "icons/icon-128x128.png",
-            "type": "image/png",
-            "sizes": "128x128",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/icon-128x128.png",
-            "type": "image/png",
-            "sizes": "128x128",
-            "purpose": "any"
-        },
-        {
-            "src": "icons/icon-192x192.png",
-            "type": "image/png",
-            "sizes": "192x192",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/icon-192x192.png",
-            "type": "image/png",
-            "sizes": "192x192",
-            "purpose": "any"
-        },
-        {
-            "src": "icons/icon-384x384.png",
-            "type": "image/png",
-            "sizes": "384x384",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/icon-384x384.png",
-            "type": "image/png",
-            "sizes": "384x384",
-            "purpose": "any"
-        },
-        {
-            "src": "icons/icon-512x512.png",
-            "type": "image/png",
-            "sizes": "512x512",
-            "purpose": "maskable"
-        },
-        {
-            "src": "icons/icon-512x512.png",
-            "type": "image/png",
-            "sizes": "512x512",
-            "purpose": "any"
-        }
-        ],
-        "screenshots" : [
-        {
-        "src": "icons/desktop_screenshot.png",
-        "sizes": "1920x1080",
-        "type": "image/png",
-        "label": ""
-        },
-        {
-        "src": "icons/mobile_screenshot.png",
-        "sizes": "1080x1920",
-        "type": "image/png",
-        "form_factor": "wide",
-        "label": ""
-        }
-    ]
+      "src": "icons/icon-128x128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "type": "image/png",
+      "sizes": "384x384",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "type": "image/png",
+      "sizes": "384x384",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/desktop_screenshot.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": ""
+    },
+    {
+      "src": "icons/mobile_screenshot.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": ""
+    }
+  ]
+}
 ```
 
 ```bash
@@ -740,14 +763,14 @@ Express is a light weight webserver designed specifically for Node.js web applic
 2. Configure the app.js to initiate the servicework.js ny inserting the JS. This ensures that when the window (app) loads, the serviceworker.js is called to memory.
 
 ```js
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-        navigator.serviceWorker
-            .register("js/serviceWorker.js")
-            .then((res) => console.log("service worker registered"))
-            .catch((err) => console.log("service worker not registered", err));
-        });
-    }
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("js/serviceWorker.js")
+      .then((res) => console.log("service worker registered"))
+      .catch((err) => console.log("service worker not registered", err));
+  });
+}
 ```
 
 ```bash
@@ -759,92 +782,95 @@ Express is a light weight webserver designed specifically for Node.js web applic
 
 ```js
 const assets = [
-        "/",
-        "css/style.css",
-        "js/app.js",
-        "images/logo.png",
-        "images/favicon.jpg",
-        "icons/icon-128x128.png",
-        "icons/icon-192x192.png",
-        "icons/icon-384x384.png",
-        "icons/icon-512x512.png",
-        "icons/desktop_screenshot.png",
-        "icons/mobile_screenshot.png"
-    ];
+  "/",
+  "css/style.css",
+  "js/app.js",
+  "images/logo.png",
+  "images/favicon.jpg",
+  "icons/icon-128x128.png",
+  "icons/icon-192x192.png",
+  "icons/icon-384x384.png",
+  "icons/icon-512x512.png",
+  "icons/desktop_screenshot.png",
+  "icons/mobile_screenshot.png",
+];
 
-    const CATALOGUE_ASSETS = "catalogue-assets";
+const CATALOGUE_ASSETS = "catalogue-assets";
 
-    self.addEventListener("install", (installEvt) => {
-    installEvt.waitUntil(
-        caches
-        .open(CATALOGUE_ASSETS)
-        .then((cache) => {
-            console.log(cache)
-            cache.addAll(assets);
-        })
-        .then(self.skipWaiting())
-        .catch((e) => {
-            console.log(e);
-        })
-    );
-    });
+self.addEventListener("install", (installEvt) => {
+  installEvt.waitUntil(
+    caches
+      .open(CATALOGUE_ASSETS)
+      .then((cache) => {
+        console.log(cache);
+        cache.addAll(assets);
+      })
+      .then(self.skipWaiting())
+      .catch((e) => {
+        console.log(e);
+      })
+  );
+});
 
-    self.addEventListener("activate", function (evt) {
-    evt.waitUntil(
-        caches
-        .keys()
-        .then((keyList) => {
-            return Promise.all(
-            keyList.map((key) => {
-                if (key === CATALOGUE_ASSETS) {
-                console.log("Removed old cache from", key);
-                return caches.delete(key);
-                }
-            })
-            );
-        })
-        .then(() => self.clients.claim())
-    );
-    });
+self.addEventListener("activate", function (evt) {
+  evt.waitUntil(
+    caches
+      .keys()
+      .then((keyList) => {
+        return Promise.all(
+          keyList.map((key) => {
+            if (key === CATALOGUE_ASSETS) {
+              console.log("Removed old cache from", key);
+              return caches.delete(key);
+            }
+          })
+        );
+      })
+      .then(() => self.clients.claim())
+  );
+});
 
-    self.addEventListener("fetch", function (evt) {
-    evt.respondWith(
-        fetch(evt.request).catch(() => {
-        return caches.open(CATALOGUE_ASSETS).then((cache) => {
-            return cache.match(evt.request);
-        });
-        })
-    );
+self.addEventListener("fetch", function (evt) {
+  evt.respondWith(
+    fetch(evt.request).catch(() => {
+      return caches.open(CATALOGUE_ASSETS).then((cache) => {
+        return cache.match(evt.request);
+      });
     })
+  );
+});
 ```
 
 ---
 
 ### Validate your PWA
+
 Validation is important to ensure the app is compliant to [W3 web standards](https://www.w3.org/standards/).
+
 1. Open your website in Chrome, open developer tools (F12), and run a Lighthouse report.
-![Screen capture of Chrome Lighthouse report](/docs/README_resources/Chrome_Lighthouse_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
+   ![Screen capture of Chrome Lighthouse report](/docs/README_resources/Chrome_Lighthouse_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
 2. Open your website in Edge, open developer tools (F12), and look at the application report.
-![Screen capture of Chrome Lighthouse report](/docs/README_resources/Edge_Application_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
+   ![Screen capture of Chrome Lighthouse report](/docs/README_resources/Edge_Application_Report.png "Click F12 and choose Lighthouse on the top menu of your developer tools").
 
 ---
 
 ### Take your app further
+
 The following code snippets will help you create a simple form on the add.html page. This form allows people to add their details to an email database for updates on your catalogue. Less explicit instructions have been provided; students are encouraged to practice their BASH, SQL, HTML, CSS, and JS to bring it all together. The screenshot below shows what the page should look like, and when users submit, the database is updated.
 
 ![Screen capture of the finished PWA](/docs/README_resources/form_example.png "This is what your application will look like").
 
 1. Page specifications:
-    - Simple form where the user inserts their name and email address
-    - When they click submit the database is updated
-    - The input form must be styled to be consistent with the rest of the website
-    - A message confirming submission is returned to the user
+   - Simple form where the user inserts their name and email address
+   - When they click submit the database is updated
+   - The input form must be styled to be consistent with the rest of the website
+   - A message confirming submission is returned to the user
 2. SQL schema specifications:
-    - A new table called contact_list
-    - 3 columns
-      - id is the primary key and should increment automatically
-      - email must be unique
-      - name
+   - A new table called contact_list
+   - 3 columns
+     - id is the primary key and should increment automatically
+     - email must be unique
+     - name
 
 > [!NOTE]
 > You will need to catch the expectation of a duplicate email
@@ -854,48 +880,64 @@ The following code snippets will help you create a simple form on the add.html p
 ```
 
 ```js
-    let bodyParser = require('body-parser');
-    app.use(bodyParser.urlencoded({extended: false}));
+let bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
 ```
 
 ```js
-    res.sendFile(path.join(__dirname,'.public/add.html'));
+res.sendFile(path.join(__dirname, ".public/add.html"));
 ```
 
 ```js
-    app.post('/add.html', function(req,res){
-    db.serialize(()=>{
-        db.run('INSERT INTO contact_list(email,name) VALUES(?,?)', [req.body.email, req.body.name], function(err) {
-            if (err) {
-                return console.log(err.message);
-            }
-            res.send("Thank you "+req.body.name+" we have added your email "+req.body.email+" to our distribution list.");
-        });
-    });
-    });
+app.post("/add.html", function (req, res) {
+  db.serialize(() => {
+    db.run(
+      "INSERT INTO contact_list(email,name) VALUES(?,?)",
+      [req.body.email, req.body.name],
+      function (err) {
+        if (err) {
+          return console.log(err.message);
+        }
+        res.send(
+          "Thank you " +
+            req.body.name +
+            " we have added your email " +
+            req.body.email +
+            " to our distribution list."
+        );
+      }
+    );
+  });
+});
 ```
 
 ```html
-    <form action="/app.html" method="POST" class="box">
-      <div>
-        <label class="form-label">Email address</label>
-        <input name="email" type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" placeholder="name@example.com">
-      </div>
-      <div>
-        <label class="form-label">Name</label>
-        <textarea class="form-control" name="name" id="name" rows="1"></textarea>
-      </div>
-      <br/>
-      <div>
-        <button type="submit" class="btn">Submit</button>
-      </div>
-    </form>
+<form action="/app.html" method="POST" class="box">
+  <div>
+    <label class="form-label">Email address</label>
+    <input
+      name="email"
+      type="email"
+      class="form-control"
+      id="email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$"
+      placeholder="name@example.com"
+    />
+  </div>
+  <div>
+    <label class="form-label">Name</label>
+    <textarea class="form-control" name="name" id="name" rows="1"></textarea>
+  </div>
+  <br />
+  <div>
+    <button type="submit" class="btn">Submit</button>
+  </div>
+</form>
 ```
 
 ```css
-    .form-control {
-
-    }
+.form-control {
+}
 ```
 
 ---
