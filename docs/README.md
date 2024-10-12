@@ -1,4 +1,4 @@
-# INTRODUCTION TO FLASK AND PROGRESSIVE WEB APPS TUTORIAL
+# INTRODUCTION TO node.JS AND PROGRESSIVE WEB APPS TUTORIAL
 
 This guided tutorial will introduce HSC Software Engineering to the basics of developing websites with the [node.JS framework](https://nodejs.org/en). The tutorial has been specifically designed for requirements in the [NESA Software Engineering Syllabus](https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022/content/n12/fa6aab137e) and students in NSW Department of Education schools using eT4L computers.
 
@@ -102,9 +102,9 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
 
 ---
 
-### Create files and folders for your Flask Project
+### Create files and folders for your node.JS Project
 
-1. Files or folders that start with a dot (`\.*` or `.*.*`) can't be served by the webserver. This adds a layer of security for assets that you do not want to be public.
+1. Files or folders that start with a dot (`\.*` or `.*.*`) can't be served by the web server. This adds a layer of security for assets that you do not want to be public.
 
 ```bash
     touch .workingDocuments
