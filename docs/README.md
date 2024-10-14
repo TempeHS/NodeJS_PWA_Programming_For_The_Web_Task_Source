@@ -55,12 +55,12 @@ This screen capture shows how the final PWA will be rendered to the user.
 
 1. Install the necessary extensions for this tutorial.
 
-| Required Extensions                                                                                    | Suggested nodeJS Extensions                                                                                      |
-| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash) | [ecmel.vscode-html-css](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)               |
-| [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor)   | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug)                     |
-| [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)           | [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)\*           |
-|                                                                                                        | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)             |
+| Required Extensions                                                                                              | Suggested nodeJS Extensions                                                                            |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash)           | [ecmel.vscode-html-css](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)     |
+| [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug)           |
+| [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)                     | [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)\* |
+|                                                                                                                  | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)   |
 
 _\*You will need to configure esbenp.prettier-vscode as your default formatter_
 
@@ -196,17 +196,14 @@ touch data_source.db
 > - Favourite books
 > - etc
 
-1. To run SQL queries
-Open the DB files, then choose "Query Editor" from the top menu.
+1. To run SQLite3 SQL queries in VSCode
+   Open the DB files, then choose "Query Editor" from the top menu.
 
 ```bash
 code data_source.db
 ```
 
-![Screen capture of query editor](/docs/README_resources/query_editor.png)
-
-> [!CAUTION]
-> The Sqlite3 parser in VSCode does not like the HTMLsafe `"` characters used in *.md. If you copy and paste the SQL strings below, you will need to replace **all** the `"` characters
+![Screen capture of query editor](/docs/README_resources/query_editor.png "Choose Query Editor from the top menu")
 
 ```sql
 CREATE TABLE extension(extID INTEGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
@@ -570,6 +567,7 @@ code app.js
 ```
 
 1. Insert the js into public/js/app.js; this JS reads the JSON file and inserts it as HTML into the .container class `<DIV>`.
+
 ```js
 let result = "";
 fetch("./frontEndData.json")
