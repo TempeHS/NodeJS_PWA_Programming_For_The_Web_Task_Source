@@ -202,7 +202,7 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 1. Run SQL queries to set up your database table. When asked choose the database.db.
 
 ```sql
-    CREATE TABLE extension(extID INTERGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
+    CREATE TABLE extension(extID INTEGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
 ```
 
 2. After running each query put `--` infront of the query to turn it into a comment so it doesn't run again and error.
