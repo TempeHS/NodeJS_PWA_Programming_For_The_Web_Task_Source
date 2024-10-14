@@ -107,7 +107,7 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
 1. Files or folders that start with a dot (`\.*` or `.*.*`) can't be served by the web server. This adds a layer of security for assets that you do not want to be public.
 
 ```bash
-    touch .workingDocuments
+    mkdir .workingDocuments
 ```
 
 2. Create a license file.
