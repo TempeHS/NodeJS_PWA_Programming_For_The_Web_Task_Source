@@ -79,10 +79,10 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
    - Open a new window in VSCode
    - Choose your working directory
 
-   - ```bash
-       git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
-       cd NodeJS_PWA_Programming_For_The_Web_Task_Template
-     ```
+```bash
+    git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
+    cd NodeJS_PWA_Programming_For_The_Web_Task_Template
+```
 
 > [!TIP]
 > Alternatively, you can fork the [template repository](https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template) to your own GitHub account and open it in a Codespace in which all dependencies and extensions will be automatically installed.
