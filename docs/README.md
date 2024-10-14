@@ -58,10 +58,9 @@ This screen capture shows how the final PWA will be rendered to the user.
 | Required Extensions                                                                                    | Suggested nodeJS Extensions                                                                                      |
 | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 | [McCarter.start-git-bash](https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash) | [ecmel.vscode-html-css](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)               |
-| [alexcvzz.vscode-sqlite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)   | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug)                     |
+| [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor)   | [ms-vscode.js-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug)                     |
 | [medo64.render-crlf](https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf)           | [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)\*           |
 |                                                                                                        | [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)             |
-|                                                                                                        | [yy0931.vscode-sqlite3-editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) |
 
 _\*You will need to configure esbenp.prettier-vscode as your default formatter_
 
@@ -186,8 +185,6 @@ cd ..
 mkdir .database
 cd .database
 touch data_source.db
-touch my_queries.sql
-code my_queries.sql
 ```
 
 > [!NOTE]
@@ -199,7 +196,14 @@ code my_queries.sql
 > - Favourite books
 > - etc
 
-1. Run SQL queries to set up your database table. When asked choose the database.db.
+1. To run SQL queries
+Open the DB files, then choose "Query Editor" from the top menu.
+
+```bash
+code data_source.db
+```
+
+![Screen capture of query editor](/docs/README_resources/query_editor.png)
 
 > [!CAUTION]
 > The Sqlite3 parser in VSCode does not like the HTMLsafe `"` characters used in *.md. If you copy and paste the SQL strings below, you will need to replace **all** the `"` characters
