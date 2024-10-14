@@ -80,8 +80,8 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
    - Choose your working directory
 
 ```bash
-    git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
-    cd NodeJS_PWA_Programming_For_The_Web_Task_Template
+git clone https://github.com/TempeHS/NodeJS_PWA_Programming_For_The_Web_Task_Template.git
+cd NodeJS_PWA_Programming_For_The_Web_Task_Template
 ```
 
 > [!TIP]
@@ -90,14 +90,14 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
 1. Inititalise a node application
 
 ```bash
-    npm init -y
+npm init -y
 ```
 
 5. Install necessary dependencies.
 
 ```bash
-    npm install sqlite3
-    npm install express
+npm install sqlite3
+npm install express
 ```
 
 ---
@@ -107,14 +107,14 @@ Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> a
 1. Files or folders that start with a dot (`\.*` or `.*.*`) can't be served by the web server. This adds a layer of security for assets that you do not want to be public.
 
 ```bash
-    mkdir .workingDocuments
+mkdir .workingDocuments
 ```
 
 2. Create a license file.
 
 ```bash
-    touch LICENSE
-    code LICENSE
+touch LICENSE
+code LICENSE
 ```
 
 Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into the file. GNU GPL is a free software license, or copyleft license, that guarantees end users the freedom to run, study, share, and modify the software.
@@ -122,53 +122,53 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 3. Create your directory structure and some base files using BASH scripts reading text files.
 
 ```text
-    ├── .database
-    ├── .workingdocuments
-    ├── public
-    │   ├── css
-    │   ├── icons
-    │   ├── images
-    │   ├── js
-    │   ├── index.html
-    │   ├── about.html
-    │   ├── manifest.json
-    │   ├── serviceWorker.js
-    ├── LICENSE
-    └── index.js
+├── .database
+├── .workingdocuments
+├── public
+│   ├── css
+│   ├── icons
+│   ├── images
+│   ├── js
+│   ├── index.html
+│   ├── about.html
+│   ├── manifest.json
+│   ├── serviceWorker.js
+├── LICENSE
+└── index.js
 ```
 
 4. Create a text file with a list of folders you need in the public folder of your project. The web server will serve the contents of the public folder. This folder is the 'FRONT END,' while all folders behind it are the 'BACK END.'
 
 ```bash
-    mkdir public
-    cd public
-    touch folders.txt
-    code folder.txt
+mkdir public
+cd public
+touch folders.txt
+code folder.txt
 ```
 
 4. Run a BASH script to read the text file and create the folders listed in it.
 
 ```bash
-    while read -r line; do
-    echo $line
-    mkdir -p $line
-    done < folders.txt
+while read -r line; do
+echo $line
+mkdir -p $line
+done < folders.txt
 ```
 
 5. Populate the file with a list of files you need at the root of your project.
 
 ```bash
-    touch files.txt
-    code files.txt
+touch files.txt
+code files.txt
 ```
 
 6. Run a BASH script to read the text file and create the files listed in it.
 
 ```bash
-    while read -r line; do
-    echo $line
-    touch -p $line
-    done < files.txt\
+while read -r line; do
+echo $line
+touch -p $line
+done < files.txt\
 ```
 
 > [!IMPORTANT]
@@ -182,12 +182,12 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ### Setup your SQLite3 Database
 
 ```bash
-    cd ..
-    mkdir .database
-    cd .database
-    touch data_source.db
-    touch my_queries.sql
-    code my_queries.sql
+cd ..
+mkdir .database
+cd .database
+touch data_source.db
+touch my_queries.sql
+code my_queries.sql
 ```
 
 > [!NOTE]
@@ -201,34 +201,37 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 
 1. Run SQL queries to set up your database table. When asked choose the database.db.
 
+> [!CAUTION]
+> The Sqlite3 parser in VSCode does not like the HTMLsafe `"` characters used in *.md. If you copy and paste the SQL strings below, you will need to replace **all** the `"` characters
+
 ```sql
-    CREATE TABLE extension(extID INTEGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
+CREATE TABLE extension(extID INTEGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
 ```
 
 2. After running each query put `--` infront of the query to turn it into a comment so it doesn't run again and error.
 3. Run SQL queries to populate your table.
 
 ```sql
-    INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (1,"Live Server","https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer","Launch a development local Server with live reload feature for static & dynamic pages","https://ritwickdey.gallerycdn.vsassets.io/extensions/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default","HTML CSS JS");
+INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (1,"Live Server","https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer","Launch a development local Server with live reload feature for static & dynamic pages","https://ritwickdey.gallerycdn.vsassets.io/extensions/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default","HTML CSS JS");
 ```
 
 ```sql
-    INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (2,"VSCode-SQLite","https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite","Explore and query SQLite databases.","https://alexcvzz.gallerycdn.vsassets.io/extensions/alexcvzz/vscode-sqlite/0.14.1/1654359416316/Microsoft.VisualStudio.Services.Icons.Default","SQL");
+INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (2,"VSCode-SQLite","https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite","Explore and query SQLite databases.","https://alexcvzz.gallerycdn.vsassets.io/extensions/alexcvzz/vscode-sqlite/0.14.1/1654359416316/Microsoft.VisualStudio.Services.Icons.Default","SQL");
 ```
 
 ```sql
-    INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (3,"Render CR LF","https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf","Displays the line ending symbol and optionally extra whitespace when 'Render whitespace' is turned on.","https://medo64.gallerycdn.vsassets.io/extensions/medo64/render-crlf/1.7.1/1689315206970/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
+INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (3,"Render CR LF","https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf","Displays the line ending symbol and optionally extra whitespace when 'Render whitespace' is turned on.","https://medo64.gallerycdn.vsassets.io/extensions/medo64/render-crlf/1.7.1/1689315206970/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
 ```
 
 ```sql
-    INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (4,"Start GIT BASH","https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash","Adds a bash command to VSCode that allows you to start git-bash in the current workspace's root folder.","https://mccarter.gallerycdn.vsassets.io/extensions/mccarter/start-git-bash/1.2.1/1499505567572/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
+INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (4,"Start GIT BASH","https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash","Adds a bash command to VSCode that allows you to start git-bash in the current workspace's root folder.","https://mccarter.gallerycdn.vsassets.io/extensions/mccarter/start-git-bash/1.2.1/1499505567572/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
 ```
 
 4. Run some SQL queries to test your database.
 
 ```sql
-    SELECT * FROM extension;
-    SELECT * FROM extension WHERE language LIKE '#BASH';
+SELECT * FROM extension;
+SELECT * FROM extension WHERE language LIKE '#BASH';
 ```
 
 ---
@@ -257,9 +260,9 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 > Adjust titles, headings and content to match your concept.
 
 ```bash
-    cd ../templates
-    touch layout.html
-    code layout.html
+cd ../templates
+touch layout.html
+code layout.html
 ```
 
 5. Insert the basic HTML structure in your index.html file.
@@ -294,9 +297,9 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 ### Style the HTML core
 
 ```bash
-    cd css
-    touch style.css
-    code style.css
+cd css
+touch style.css
+code style.css
 ```
 
 1. Insert the css code into css/style.css.
@@ -326,8 +329,8 @@ main {
 ### Make and style the menu
 
 ```bash
-    cd ..
-    code index.html
+cd ..
+code index.html
 ```
 
 1. Insert the menu HTML into index.html between the comment placeholders.
@@ -345,8 +348,8 @@ main {
 ```
 
 ```bash
-    `cd ../../public/css`
-    `code style.css`
+`cd ../../public/css`
+`code style.css`
 ```
 
 2. Style the menu by inserting this below your existing CSS in public/css/style.css.
@@ -388,8 +391,8 @@ nav h1 {
 Express is a light weight webserver designed specifically for Node.js web applications. You have already installed it when you set up your environment.
 
 ```bash
-    cd ../..
-    code index.js
+cd ../..
+code index.js
 ```
 
 1. Insert the node.js to the backend index.js.
@@ -415,7 +418,7 @@ app.listen(5000, () =>
 2. Run the built-in webserver.
 
 ```bash
-    node index.js
+node index.js
 ```
 
 3. Visit your website and look at the source in developer tools to see how the page has been rendered.
@@ -439,117 +442,116 @@ app.listen(5000, () =>
 
 1. Install the Python SQLite3 requirements
 
-   ```bash
-   pip install sqlite3
-   ```
+```bash
+pip install sqlite3
+```
 
-   ```bash
-   touch database_manager.py
-   code database_manager.py
-   ```
+```bash
+touch database_manager.py
+code database_manager.py
+```
 
 2. Write the Python Script to query the SQL database and construct the JSON file.
 
-   ```python
-   import sqlite3 as sql
+```python
+import sqlite3 as sql
 
-   con = sql.connect(".database/data_source.db")
-   cur = con.cursor()
-   data = cur.execute('SELECT * FROM extension').fetchall()
-   con.close()
-   f = open("public/frontEndData.json", "w")
-   f.write("[\n")
-   for row in data:
-       f.write('{\n')
-       f.write(f'"extID":{row[0]},\n"name":"{row[1]}",\n"hyperlink":"{row[2]}",\n"about":"{row[3]}",\n"image":"{row[4]}",\n"language":"{row[5]}"\n')
-       if row == data[len(data)-1]:
-           f.write("}\n")
-       else:
-           f.write("},\n")
-   f.write("]\n")
-   f.close()
-
-   ```
+con = sql.connect(".database/data_source.db")
+cur = con.cursor()
+data = cur.execute('SELECT * FROM extension').fetchall()
+con.close()
+f = open("public/frontEndData.json", "w")
+f.write("[\n")
+for row in data:
+    f.write('{\n')
+    f.write(f'"extID":{row[0]},\n"name":"{row[1]}",\n"hyperlink":"{row[2]}",\n"about":"{row[3]}",\n"image":"{row[4]}",\n"language":"{row[5]}"\n')
+    if row == data[len(data)-1]:
+        f.write("}\n")
+    else:
+        f.write("},\n")
+f.write("]\n")
+f.close()
+```
 
 > [!NOTE]
 > This approach is different from the Pythonic way to generate a JSON file. Because this approach is about algorithm design, it models how an algorithm can easily migrate data from one format/structure to another. If you know the Pythonic way, feel free to implement it. However, software engineers should understand and be able to replicate data migration algorithms.
 
-    ```bash
-    code index.js
-    ```
+```bash
+code index.js
+```
 
 2. Insert this js above the express setup in index.js to run the Python program.
 
-   ```js
-   const spawn = require("child_process").spawn;
-   // you can add arguments with spawn('python',["path/to/script.py", arg1, arg2, ...])
-   const pythonProcess = spawn("python", ["database_manager.py"]);
-   ```
+```js
+const spawn = require("child_process").spawn;
+// you can add arguments with spawn('python',["path/to/script.py", arg1, arg2, ...])
+const pythonProcess = spawn("python", ["database_manager.py"]);
+```
 
 3. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
 
-   ```bash
-   node index.js
-   ```
+```bash
+node index.js
+```
 
 </details>
 
 <details>
   <summary><h3 style="display:inline">I want to use JavaScript</h3></summary>
   
-    ```bash
-    code index.js
-    ```
+```bash
+code index.js
+```
 
 1. Write the Python Script to query the SQL database and construct the JSON file.
 
-   ```js
-   const sqlite3 = require("sqlite3").verbose();
-   const db = new sqlite3.Database(".database/data_source.db");
+```js
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database(".database/data_source.db");
 
-   let myString = "[\n";
-   db.all("SELECT * FROM extension", function (err, rows) {
-     let myCounter = 0;
-     rows.forEach(function (row) {
-       // for debugging
-       // console.log(row.extID + ": " + row.name + ": " + row.hyperlink + ": " + row.about + ": " + row.image + ": " + row.language);
-       myString =
-         myString +
-         '{\n"extID":' +
-         row.extID +
-         ',\n"name":"' +
-         row.name +
-         '",\n"hyperlink":"' +
-         row.hyperlink +
-         '",\n"about":"' +
-         row.about +
-         '",\n"image":"' +
-         row.image +
-         '",\n"language":"' +
-         row.language;
-       myCounter++;
-       if (myCounter == rows.length) {
-         myString = myString + '"\n}\n';
-       } else {
-         myString = myString + '"\n},\n';
-       }
-     });
+let myString = "[\n";
+db.all("SELECT * FROM extension", function (err, rows) {
+  let myCounter = 0;
+  rows.forEach(function (row) {
+    // for debugging
+    // console.log(row.extID + ": " + row.name + ": " + row.hyperlink + ": " + row.about + ": " + row.image + ": " + row.language);
+    myString =
+      myString +
+      '{\n"extID":' +
+      row.extID +
+      ',\n"name":"' +
+      row.name +
+      '",\n"hyperlink":"' +
+      row.hyperlink +
+      '",\n"about":"' +
+      row.about +
+      '",\n"image":"' +
+      row.image +
+      '",\n"language":"' +
+      row.language;
+    myCounter++;
+    if (myCounter == rows.length) {
+      myString = myString + '"\n}\n';
+    } else {
+      myString = myString + '"\n},\n';
+    }
+  });
 
-     // console.log(myString);
-     var fs = require("fs");
-     fs.writeFile("public/frontEndData.json", myString + "]", function (err) {
-       if (err) {
-         console.log(err);
-       }
-     });
-   });
-   ```
+  // console.log(myString);
+  var fs = require("fs");
+  fs.writeFile("public/frontEndData.json", myString + "]", function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
+```
 
 2. Test your application. The expected behaviour is a file called frontEndData.json filled with the table from data_source is saved in the /public folder. The JSON file should validate with [jsonlint](https://jsonlint.com/).
 
-   ```bash
-   node index.js
-   ```
+```bash
+node index.js
+```
 
 </details>
 
@@ -557,43 +559,43 @@ app.listen(5000, () =>
 
 ### Render the JSON data on the frontend
 
-    ```bash
-    cd public/js
-    touch app.js
-    code app.js
-    ```
+```bash
+cd public/js
+touch app.js
+code app.js
+```
 
 1. Insert the js into public/js/app.js; this JS reads the JSON file and inserts it as HTML into the .container class `<DIV>`.
-   ```js
-   let result = "";
-   fetch("./frontEndData.json")
-     .then(function (response) {
-       return response.json();
-     })
-     .then(function (data) {
-       appendData(data);
-     })
-     .catch(function (err) {
-       console.log("error: " + err);
-     });
-   function appendData(data) {
-     data.forEach(({ name, image, hyperlink, about, language } = rows) => {
-       result += `
-           <div class="card">
-           <img class="card-image" src="${image}" alt="Product image for the ${name} VSCode extension."/>
-           <h1 class="card-name">${name}</h1>
-           <p class="card-about">${about}</p>
-           <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
-           </div>
-           `;
-     });
-     document.querySelector(".container").innerHTML = result;
-   }
-   ```
+```js
+let result = "";
+fetch("./frontEndData.json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    appendData(data);
+  })
+  .catch(function (err) {
+    console.log("error: " + err);
+  });
+function appendData(data) {
+  data.forEach(({ name, image, hyperlink, about, language } = rows) => {
+    result += `
+        <div class="card">
+        <img class="card-image" src="${image}" alt="Product image for the ${name} VSCode extension."/>
+        <h1 class="card-name">${name}</h1>
+        <p class="card-about">${about}</p>
+        <a class="card-link" href="${hyperlink}"><button class="btn">Read More</button></a>
+        </div>
+        `;
+  });
+  document.querySelector(".container").innerHTML = result;
+}
+```
 
 ```bash
-    cd ../css
-    code style.css
+cd ../css
+code style.css
 ```
 
 2. Style the cards by inserting this below your existing CSS in public/css/style.css.
@@ -672,8 +674,8 @@ app.listen(5000, () =>
 1. Take a screenshot of the website. Then size the image to 1080px X 1920px, web optimise the images using [TinyPNG](https://tinypng.com/) and save it to public/icons.
 
 ```bash
-    cd ..
-    code manifest.json
+cd ..
+code manifest.json
 ```
 
 2. Configure the manifest.json to the PWA standard by inserting the JSON below and validating the JSON with [jsonlint](https://jsonlint.com/). The manifest.json sets the configuration for the installation and caching of the PWA.
@@ -756,8 +758,8 @@ app.listen(5000, () =>
 ```
 
 ```bash
-    cd js
-    code ap.js
+cd js
+code ap.js
 ```
 
 2. Configure the app.js to initiate the servicework.js ny inserting the JS. This ensures that when the window (app) loads, the serviceworker.js is called to memory.
@@ -774,8 +776,8 @@ if ("serviceWorker" in navigator) {
 ```
 
 ```bash
-    cd js
-    code serviceworker.js
+cd js
+code serviceworker.js
 ```
 
 1. Configure the serviceworker.js by inserting the JS. The serviceworker.js, as the name suggests, is the file that does all the work in a PWA, including caching and API integration for the [WEB APIs](https://developer.mozilla.org/en-US/docs/Web/API).
@@ -876,7 +878,7 @@ The following code snippets will help you create a simple form on the add.html p
 > You will need to catch the expectation of a duplicate email
 
 ```bash
-    npm npm install body-parser
+npm npm install body-parser
 ```
 
 ```js
