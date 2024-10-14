@@ -197,7 +197,7 @@ touch data_source.db
 > - etc
 
 1. To run SQLite3 SQL queries in VSCode
-   Open the DB files, then choose "Query Editor" from the top menu.
+Open the DB file, then choose "Query Editor" from the top menu.
 
 ```bash
 code data_source.db
