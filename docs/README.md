@@ -792,7 +792,7 @@ const assets = [
   "css/style.css",
   "js/app.js",
   "images/logo.png",
-  "images/favicon.jpg",
+  "images/favicon.png",
   "icons/icon-128x128.png",
   "icons/icon-192x192.png",
   "icons/icon-384x384.png",
