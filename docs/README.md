@@ -477,7 +477,7 @@ f.close()
 ```
 
 > [!NOTE]
-> This approach is different from the Pythonic way to generate a JSON file. Because this approach is about algorithm design, it models how an algorithm can easily migrate data from one format/structure to another. If you know the Pythonic way, feel free to implement it. However, software engineers should understand and be able to replicate data migration algorithms.
+> This approach is different from the Pythonic way to generate a JSON file. Because this approach is about algorithm design, it models how an algorithm can easily migrate data from one format/structure to another. If you know the Pythonic way, you can just implement it. However, software engineers should understand and be able to replicate data migration algorithms.
 
 ```bash
 code index.js
