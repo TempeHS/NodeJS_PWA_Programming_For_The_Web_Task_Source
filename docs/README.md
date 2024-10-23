@@ -197,7 +197,7 @@ touch data_source.db
 > - etc
 
 1. To run SQLite3 SQL queries in VSCode
-Open the DB file, then choose "Query Editor" from the top menu.
+   Open the DB file, then choose "Query Editor" from the top menu.
 
 ```bash
 code data_source.db
@@ -242,7 +242,7 @@ SELECT * FROM extension WHERE language LIKE '#BASH';
 > [!NOTE]
 > Graphic design is not the focus of this course. It is suggested that you do not spend excessive time designing logos and icons.
 
-1. Use Photoshop or [Canva](https://www.canva.com/en_au/signup/?signupRedirect=%2Fedu-signup&loginRedirect=%2Fedu-signup&brandingVariant=edu) to design a simple square logo 1080px X 1080px named logo.png. Save all working files (*.psd, pre-optimised originals, etc) into the .workingdocuments directory.
+1. Use Photoshop or [Canva](https://www.canva.com/en_au/signup/?signupRedirect=%2Fedu-signup&loginRedirect=%2Fedu-signup&brandingVariant=edu) to design a simple square logo 1080px X 1080px named logo.png. Save all working files (\*.psd, pre-optimised originals, etc) into the .workingdocuments directory.
 2. Design a simplified app icon 512px X 512px named favicon.png.
 3. Web optimise the images using [TinyPNG](https://tinypng.com/).
 4. Save the files into the public/images folder.
@@ -483,7 +483,10 @@ f.close()
 code index.js
 ```
 
-2. Insert this js above the express setup in index.js to run the Python program.
+2. Insert this Javascript above the express setup in index.js to execute the Python program.
+
+> [!Important]
+> This code must be above the Express server configuration and instantiation.
 
 ```js
 const spawn = require("child_process").spawn;
@@ -506,7 +509,10 @@ node index.js
 code index.js
 ```
 
-1. Write the Python Script to query the SQL database and construct the JSON file.
+1. Insert this Javascript above the express setup in index.js to query the SQL database and construct the JSON file.
+
+> [!Important]
+> This code must be above the Express server configuration and instantiation.
 
 ```js
 const sqlite3 = require("sqlite3").verbose();
