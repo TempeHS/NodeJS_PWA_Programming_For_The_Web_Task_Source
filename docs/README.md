@@ -35,6 +35,7 @@ This screen capture shows how the final PWA will be rendered to the user.
 1. VSCode
 2. Python 3.x +
 3. Node.js v.20.x +
+4. GIT for windows 2.x.x +
 
 ## Prior learning
 
