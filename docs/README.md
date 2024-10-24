@@ -171,7 +171,7 @@ touch -p $line
 done < files.txt\
 ```
 
-> [!IMPORTANT]
+> [!Important]
 >
 > —The last list item needs a line ending, so make sure the last line in the file is blank.
 >
