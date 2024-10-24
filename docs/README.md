@@ -50,7 +50,7 @@ This screen capture shows how the final PWA will be rendered to the user.
 
 ![Screen recording of setting up VSCode](/docs/README_resources/get_vscode_started.gif "Follow these steps to setup VSCode")
 
-> [!NOTE]
+> [!Note]
 > Helpful VSCode settings are configured in [.vscode/settings.json](/.vscode/settings.json), which will automatically apply if you are not using a custom profile. If you are using a custom profile, it is suggested you manually apply those settings to your profile, especially the \*.md file association, so the README.md default opens in preview mode and setting _bash_ as your default terminal.
 
 1. Install the necessary extensions for this tutorial.
@@ -66,7 +66,7 @@ _\*You will need to configure esbenp.prettier-vscode as your default formatter_
 
 2. Open a GIT BASH terminal
 
-> [!NOTE]
+> [!Note]
 > From now on, you should aim to run all commands from the CLI. You are discouraged from left/right clicking the GUI. You will find it feels slow at first, but through disciplined use, you will become much quicker and more accurate with CLI commands than GUI controls.
 
 Make sure you open a new terminal with the keys <kbd>Ctrl</kbd> + <kbd>`</kbd> and choose Git Bash from the menu option in the top right of the terminal shell.
@@ -187,7 +187,7 @@ cd .database
 touch data_source.db
 ```
 
-> [!NOTE]
+> [!Note]
 > The following SQL queries are provided as an example only. Students are encouraged to select their content and design a database schema for it; ideas include:
 >
 > - Favourite bands
@@ -239,7 +239,7 @@ SELECT * FROM extension WHERE language LIKE '#BASH';
 
 ### Make your graphic assets
 
-> [!NOTE]
+> [!Note]
 > Graphic design is not the focus of this course. It is suggested that you do not spend excessive time designing logos and icons.
 
 1. Use Photoshop or [Canva](https://www.canva.com/en_au/signup/?signupRedirect=%2Fedu-signup&loginRedirect=%2Fedu-signup&brandingVariant=edu) to design a simple square logo 1080px X 1080px named logo.png. Save all working files (\*.psd, pre-optimised originals, etc) into the .workingdocuments directory.
@@ -259,7 +259,7 @@ SELECT * FROM extension WHERE language LIKE '#BASH';
 
 ### Setup your core index.html
 
-> [!NOTE]
+> [!Note]
 > Adjust titles, headings and content to match your concept.
 
 ```bash
@@ -430,7 +430,7 @@ node index.js
 
 ### Query your SQL database and migrate the data for the frontend
 
-> [!NOTE]
+> [!Note]
 > From here students have two choices, they can use their existing Python skills or new JS skills. Either way, students will be querying a table in data_source.db and then constructing a JSON file that will be pushed to the frontend, ready for rending by a frontend JS script.
 > If you choose the JS method, you should refer to the Python method in the future as a helpful way to have more complex Python programs in the backend and create a simple responsive GUI using HTML/CSS/JS.
 
@@ -476,7 +476,7 @@ f.write("]\n")
 f.close()
 ```
 
-> [!NOTE]
+> [!Note]
 > This approach is different from the Pythonic way to generate a JSON file. Because this approach is about algorithm design, it models how an algorithm can easily migrate data from one format/structure to another. If you know the Pythonic way, you can just implement it. However, software engineers should understand and be able to replicate data migration algorithms.
 
 ```bash
@@ -884,7 +884,7 @@ The following code snippets will help you create a simple form on the add.html p
      - email must be unique
      - name
 
-> [!NOTE]
+> [!Note]
 > You will need to catch the expectation of a duplicate email
 
 ```bash
