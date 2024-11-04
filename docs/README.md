@@ -38,7 +38,7 @@ This screen capture shows how the final PWA will be rendered to the user.
 4. [GIT 2.x.x +](https://git-scm.com/downloads)
 
 > [!Important]
-> MacOS users may have a `pip3` soft link instead of `pip`, run the below commands to see what path your system is configured with and use that command through the project.
+> MacOS and Linux users may have a `pip3` soft link instead of `pip`, run the below commands to see what path your system is configured with and use that command through the project. If neither command returns a version, then likely [Python 3.x](https://www.python.org/downloads/) needs to be installed.
 > ```bash
 > pip show pip
 > pip3 show pip
