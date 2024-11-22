@@ -1,22 +1,6 @@
 [
 {
 "extID":1,
-"name":"Live Server",
-"hyperlink":"https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer",
-"about":"Launch a development local Server with live reload feature for static & dynamic pages",
-"image":"https://ritwickdey.gallerycdn.vsassets.io/extensions/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default",
-"language":"HTML"
-},
-{
-"extID":2,
-"name":"VSCode-SQLite",
-"hyperlink":"https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite",
-"about":"Explore and query SQLite databases.",
-"image":"https://alexcvzz.gallerycdn.vsassets.io/extensions/alexcvzz/vscode-sqlite/0.14.1/1654359416316/Microsoft.VisualStudio.Services.Icons.Default",
-"language":"SQL"
-},
-{
-"extID":3,
 "name":"Render CR LF",
 "hyperlink":"https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf",
 "about":"Displays the line ending symbol and optionally extra whitespace when 'Render whitespace' is turned on.",
@@ -24,7 +8,7 @@
 "language":"#BASH"
 },
 {
-"extID":4,
+"extID":2,
 "name":"Start GIT BASH",
 "hyperlink":"https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash",
 "about":"Adds a bash command to VSCode that allows you to start git-bash in the current workspace's root folder.",
@@ -32,19 +16,11 @@
 "language":"#BASH"
 },
 {
-"extID":5,
+"extID":3,
 "name":"SQLite3 Editor",
 "hyperlink":"https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor",
 "about":"Edit SQLite3 files like you would in spreadsheet applications.",
 "image":"https://yy0931.gallerycdn.vsassets.io/extensions/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default",
 "language":"SQL"
-},
-{
-"extID":6,
-"name":"Start GIT BASH",
-"hyperlink":"https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash",
-"about":"Adds a bash command to VSCode that allows you to start git-bash in the current workspace's root folder.",
-"image":"https://mccarter.gallerycdn.vsassets.io/extensions/mccarter/start-git-bash/1.2.1/1499505567572/Microsoft.VisualStudio.Services.Icons.Default",
-"language":"#BASH"
 }
 ]

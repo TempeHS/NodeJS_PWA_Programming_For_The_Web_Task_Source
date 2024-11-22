@@ -12,13 +12,13 @@ A [Progressive Web Apps (PWAs)](https://developer.mozilla.org/en-US/docs/Web/Pro
 
 Because PWAs are websites, they have the same basic features as any other website: at least one HTML page, which loads CSS and JavaScript. Javascript is the language of the web and is exclusively used for the client-side front end; python, in the web context, can only be used in the back end. Like a normal website, the JavaScript loaded by the page has a global Window object and can access all the Web APIs that are available through that object. The PWA standard as defined by [W3C Standards](https://www.w3.org/standards/) has some specific features additional to a website:
 
-| Feature             | Purpose                                                                                                                                                                                                                                                                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| manifest.json       | An app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different-sized viewports.                                                                                                                                 |
+| Feature             | Purpose                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| manifest.json       | An app manifest file, which, at a minimum, provides information that the operating system needs to install the PWA, such as the app name, screen orientation and icon set for different-sized viewports.                                                                                                                                                      |
 | serviceworker.js    | A service worker, which, at a minimum, manages the caching that enables an online and offline experience whilst also interfacing with API's such as the [notification web API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). It's important to understand that this JS file cannot control the DOM of the application for security reasons. |
-| Icons & screenshots | A set of icons and screenshots that are used when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed.                                                                                                                           |
-| Installable         | Because of the information contained in the manifest.json all PWA's can be installed like a native app. They can also be packaged and uploaded to the Google, Microsoft & Apple app stores.                                                                                                                                              |
-| Cached locally      | Because the service worker details all apps and pages to be cached (all pages must have a \*.html name), the app and its resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._                                            |
+| Icons & screenshots | A set of icons and screenshots that are used when uploading to an app store and when installing it as a native application. It is these icons that will be used in the desktop or app launcher when installed.                                                                                                                                                |
+| Installable         | Because of the information contained in the manifest.json all PWA's can be installed like a native app. They can also be packaged and uploaded to the Google, Microsoft & Apple app stores.                                                                                                                                                                   |
+| Cached locally      | Because the service worker details all apps and pages to be cached (all pages must have a \*.html name), the app and its resources can be cached locally for quick load times. _Note backend apps where the web server serves all pages from the DNS root do not meet the PWA specification._                                                                 |
 
 The below image illustrates how the servicework manages online and offline behaviour.
 
@@ -39,6 +39,7 @@ This screen capture shows how the final PWA will be rendered to the user.
 
 > [!Important]
 > MacOS and Linux users may have a `pip3` soft link instead of `pip`, run the below commands to see what path your system is configured with and use that command through the project. If neither command returns a version, then likely [Python 3.x](https://www.python.org/downloads/) needs to be installed.
+>
 > ```bash
 > pip show pip
 > pip3 show pip
@@ -111,10 +112,10 @@ npm install express
 
 ### Create files and folders for your node.JS Project
 
-1. Files or folders that start with a dot (`\.*` or `.*.*`) can't be served by the web server. This adds a layer of security for assets that you do not want to be public.
+1. Make a folder for all your working documents like photoshop \*.psd files, developer documentation etc.
 
 ```bash
-mkdir .workingDocuments
+mkdir working_documents
 ```
 
 2. Create a license file.
@@ -129,8 +130,8 @@ Copy the [GNU GPL license](https://www.gnu.org/licenses/gpl-3.0.txt) text into t
 3. Create your directory structure and some base files using BASH scripts reading text files.
 
 ```text
-├── .database
-├── .workingdocuments
+├── database
+├── working_documents
 ├── public
 │   ├── css
 │   ├── icons
@@ -190,8 +191,8 @@ done < files.txt\
 
 ```bash
 cd ..
-mkdir .database
-cd .database
+mkdir database
+cd database
 touch data_source.db
 ```
 
@@ -250,7 +251,7 @@ SELECT * FROM extension WHERE language LIKE '#BASH';
 > [!Note]
 > Graphic design is not the focus of this course. It is suggested that you do not spend excessive time designing logos and icons.
 
-1. Use Photoshop or [Canva](https://www.canva.com/en_au/signup/?signupRedirect=%2Fedu-signup&loginRedirect=%2Fedu-signup&brandingVariant=edu) to design a simple square logo 1080px X 1080px named logo.png. Save all working files (\*.psd, pre-optimised originals, etc) into the .workingdocuments directory.
+1. Use Photoshop or [Canva](https://www.canva.com/en_au/signup/?signupRedirect=%2Fedu-signup&loginRedirect=%2Fedu-signup&brandingVariant=edu) to design a simple square logo 1080px X 1080px named logo.png. Save all working files (\*.psd, pre-optimised originals, etc) into the working_documents directory.
 2. Design a simplified app icon 512px X 512px named favicon.png.
 3. Web optimise the images using [TinyPNG](https://tinypng.com/).
 4. Save the files into the public/images folder.
@@ -467,7 +468,7 @@ code database_manager.py
 ```python
 import sqlite3 as sql
 
-con = sql.connect(".database/data_source.db")
+con = sql.connect("database/data_source.db")
 cur = con.cursor()
 data = cur.execute('SELECT * FROM extension').fetchall()
 con.close()
@@ -524,7 +525,7 @@ code index.js
 
 ```js
 const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database(".database/data_source.db");
+const db = new sqlite3.Database("database/data_source.db");
 
 let myString = "[\n";
 db.all("SELECT * FROM extension", function (err, rows) {
@@ -905,7 +906,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 ```
 
 ```js
-res.sendFile(path.join(__dirname, ".public/add.html"));
+res.sendFile(path.join(__dirname, "public/add.html"));
 ```
 
 ```js
