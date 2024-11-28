@@ -13,7 +13,8 @@
     "GitHub.codespaces",
     "ms-vscode-remote.remote-wsl",
     "ms-azuretools.vscode-docker",
-    "saeris.markdown-github-alerts",
-    "bierner.markdown-preview-github-styles"
+    "yahyabatulu.vscode-markdown-alert",
+    "bierner.markdown-preview-github-styles",
+    "mechatroner.rainbow-csv"
   ]
 }
