@@ -12,7 +12,10 @@
   "license": "CC-BY-NC-SA-4.0",
   "dependencies": {
     "body-parser": "^1.20.3",
-    "express": "^4.18.2",
-    "sqlite3": "^5.1.6"
+    "express": "^4.21.1",
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
