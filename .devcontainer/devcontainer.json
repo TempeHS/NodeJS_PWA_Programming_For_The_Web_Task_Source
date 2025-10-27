@@ -56,7 +56,9 @@
         "streetsidesoftware.code-spell-checker",
         "tal7aouy.icons",
         "saeris.markdown-github-alerts",
-        "yy0931.vscode-sqlite3-editor"       
+        "yy0931.vscode-sqlite3-editor",
+        "github.copilot",
+        "usernamehw.errorlens"       
       ]
     }
   },
