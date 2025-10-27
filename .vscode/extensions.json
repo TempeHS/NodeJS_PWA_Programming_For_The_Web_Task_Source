@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "mcu-debug.debug-tracker-vscode",
     "bierner.markdown-mermaid",
     "bierner.markdown-preview-github-styles",
     "ecmel.vscode-html-css",
